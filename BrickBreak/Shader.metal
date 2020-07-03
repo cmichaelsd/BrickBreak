@@ -9,12 +9,18 @@
 #include <metal_stdlib>
 using namespace metal;
 
+// define the constant structure used in Render.swift so the shader function can recognize it
+struct Constants {
+    float animateBy;
+};
+
 // vertex is the type of function
 // return type is float4
 // function name is vertex_shader
 
 // parameters
 // vertices - a pointer to a vertices array created in the function initalization
+// &constant - constant space as opposed to device space, Constant time property, &constants variable name; constant struct byte are allocated to buffer 1
 // vertexId - the id of the current vertex being processed by the GPU
 
 // return
@@ -26,8 +32,17 @@ using namespace metal;
 // the fragment function function returns the color of each fragment
 
 // processes the real position of each vertex
-vertex float4 vertex_shader(const device packed_float3 *vertices [[ buffer(0) ]], uint vertexId [[ vertex_id ]]) {
-    return float4(vertices[vertexId], 1);
+vertex float4 vertex_shader(
+    const device packed_float3 *vertices [[ buffer(0) ]],
+    constant Constants &constants [[ buffer(1) ]],
+    uint vertexId [[ vertex_id ]]
+) {
+    // get current vertex position
+    float4 position = float4(vertices[vertexId], 1);
+    // add animated motion to vertex
+    position.x += constants.animateBy;
+    
+    return position;
 }
 
 // fragment is the type
