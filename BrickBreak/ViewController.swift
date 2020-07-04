@@ -6,7 +6,6 @@
 //  Copyright © 2020 cmichaelsd. All rights reserved.
 //
 
-import UIKit
 import MetalKit
 
 enum Colors {
@@ -36,6 +35,8 @@ class ViewController: UIViewController {
         metalView.clearColor = Colors.green
         
         renderer = Renderer(device: device)
+        renderer?.scene = GameScene(device: device, size: view.bounds.size)
+        
         metalView.delegate = renderer
     }
 }

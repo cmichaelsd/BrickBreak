@@ -13,44 +13,15 @@ class Renderer: NSObject {
     let device: MTLDevice
     let commandQueue: MTLCommandQueue!
     
-    // create vertices and do not repeat vertices
-    var vertices: [Float] = [
-       -1,  1, 0, // V0
-       -1, -1, 0, // V1
-        1, -1, 0, // V2
-        1,  1, 0, // V3
-    ]
-    
-    // create indices which reference which 4 vertices to use from the vertices array
-    var indices: [UInt16] = [
-        0, 1, 2,
-        2, 3, 0
-    ]
+    var scene: Scene?
     
     var pipelineState: MTLRenderPipelineState?
-    var vertexBuffer: MTLBuffer?
-    var indexBuffer: MTLBuffer?
-    
-    struct Constants {
-        var animateBy: Float = 0.0
-    }
-    
-    var constants = Constants()
-    
-    var time: Float = 0
     
     init(device: MTLDevice) {
         self.device = device
         self.commandQueue = device.makeCommandQueue()
         super.init()
-        buildModel()
         buildPipelineState()
-    }
-    
-    // vertices are stored in a Metal buffer
-    private func buildModel() {
-        vertexBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<Float>.size, options: [])
-        indexBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<UInt16>.size, options: [])
     }
     
     // create a library to interact and define metal Shader functions
@@ -83,30 +54,17 @@ extension Renderer: MTKViewDelegate {
     func draw(in view: MTKView) {
         guard let drawable = view.currentDrawable,
             let pipelineState = pipelineState,
-            let indexBuffer = indexBuffer,
             let descriptor = view.currentRenderPassDescriptor else {
                 return
         }
         
         let commandBuffer = commandQueue.makeCommandBuffer()
-        
-        time += 1 / Float(view.preferredFramesPerSecond)
-        
         let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: descriptor)
-        
-        let animateBy = abs(sin(time) / 2 + 0.5)
-        constants.animateBy = animateBy
         
         commandEncoder?.setRenderPipelineState(pipelineState)
         
-        commandEncoder?.setVertexBytes(&constants, length: MemoryLayout<Constants>.stride, index: 1)
-        
-        // send the Metal buffer to the GPU, these vertices will be referenced by the indexed draw below
-        commandEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-        
-        // use indices instead of vertex for drawing, saves memory
-        // commandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
-        commandEncoder?.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: indexBuffer, indexBufferOffset: 0)
+        let deltaTime = 1 / Float(view.preferredFramesPerSecond)
+        scene?.render(commandEncoder: commandEncoder!, deltaTime: deltaTime)
         
         commandEncoder?.endEncoding()
         commandBuffer?.present(drawable)
