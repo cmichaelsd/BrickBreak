@@ -11,11 +11,11 @@ import MetalKit
 class Plane: Node {
     
     // create vertices and do not repeat vertices
-    var vertices: [Float] = [
-       -1,  1, 0, // V0
-       -1, -1, 0, // V1
-        1, -1, 0, // V2
-        1,  1, 0, // V3
+    var vertices: [Vertex] = [
+        Vertex(position: SIMD3<Float>(-1, 1, 0), color: SIMD4<Float>(1, 0, 0, 1)), // V0
+        Vertex(position: SIMD3<Float>(-1, -1, 0), color: SIMD4<Float>(0, 1, 0, 1)), // V1
+        Vertex(position: SIMD3<Float>(1, -1, 0), color: SIMD4<Float>(0, 0, 1, 1)), // V2
+        Vertex(position: SIMD3<Float>(1, 1, 0), color: SIMD4<Float>(1, 0, 1, 1)), // V3
     ]
     
     // create indices which reference which 4 vertices to use from the vertices array
@@ -42,7 +42,7 @@ class Plane: Node {
     
     // vertices are stored in a Metal buffer
     private func buildBuffers(device: MTLDevice) {
-        vertexBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<Float>.size, options: [])
+        vertexBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<Vertex>.stride, options: [])
         indexBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<UInt16>.size, options: [])
     }
     

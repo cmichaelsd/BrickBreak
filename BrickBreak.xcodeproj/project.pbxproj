@@ -19,6 +19,7 @@
 		20D7304324B01F6500028FE8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304224B01F6500028FE8 /* GameScene.swift */; };
 		20D7304524B01F7600028FE8 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304424B01F7600028FE8 /* Node.swift */; };
 		20D7304724B01F7F00028FE8 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304624B01F7F00028FE8 /* Plane.swift */; };
+		20D7304B24B0497400028FE8 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304A24B0497400028FE8 /* Types.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		20D7304224B01F6500028FE8 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		20D7304424B01F7600028FE8 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		20D7304624B01F7F00028FE8 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		20D7304A24B0497400028FE8 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				201E129A24AFB3AF00C01F47 /* AppDelegate.swift */,
 				201E129C24AFB3AF00C01F47 /* SceneDelegate.swift */,
 				201E12AE24AFB3BD00C01F47 /* Renderer.swift */,
+				20D7304A24B0497400028FE8 /* Types.swift */,
 				201E12B024AFB88B00C01F47 /* Shader.metal */,
 				201E129E24AFB3AF00C01F47 /* ViewController.swift */,
 				201E12A024AFB3AF00C01F47 /* Main.storyboard */,
@@ -175,6 +178,7 @@
 				201E12AF24AFB3BD00C01F47 /* Renderer.swift in Sources */,
 				20D7304724B01F7F00028FE8 /* Plane.swift in Sources */,
 				201E129F24AFB3AF00C01F47 /* ViewController.swift in Sources */,
+				20D7304B24B0497400028FE8 /* Types.swift in Sources */,
 				20D7304124B01F5600028FE8 /* Scene.swift in Sources */,
 				20D7304524B01F7600028FE8 /* Node.swift in Sources */,
 				201E129B24AFB3AF00C01F47 /* AppDelegate.swift in Sources */,

@@ -14,6 +14,17 @@ struct Constants {
     float animateBy;
 };
 
+// define the vertex structure used in Types
+struct VertexIn {
+    float4 position [[ attribute(0) ]];
+    float4 color [[ attribute(1) ]];
+};
+
+struct VertexOut {
+    float4 position [[ position ]];
+    float4 color;
+};
+
 // vertex is the type of function
 // return type is float4
 // function name is vertex_shader
@@ -32,17 +43,13 @@ struct Constants {
 // the fragment function function returns the color of each fragment
 
 // processes the real position of each vertex
-vertex float4 vertex_shader(
-    const device packed_float3 *vertices [[ buffer(0) ]],
-    constant Constants &constants [[ buffer(1) ]],
-    uint vertexId [[ vertex_id ]]
-) {
-    // get current vertex position
-    float4 position = float4(vertices[vertexId], 1);
-    // add animated motion to vertex
-    position.x += constants.animateBy;
+vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]]) {
     
-    return position;
+    VertexOut vertexOut;
+    vertexOut.position = vertexIn.position;
+    vertexOut.color = vertexIn.color;
+    
+    return vertexOut;
 }
 
 // fragment is the type
@@ -52,8 +59,7 @@ vertex float4 vertex_shader(
 // return
 // half4 (a smaller float4) R:1, G:0, B:0, A:1 - Red
 
-// returns the red color
-fragment half4 fragment_shader() {
-//    return half4(1, 0, 0, 1);
-    return half4(1, 1, 0, 1);
+// returns the color
+fragment half4 fragment_shader(VertexOut vertexIn [[ stage_in ]]) {
+    return half4(vertexIn.color);
 }
