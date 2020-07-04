@@ -20,14 +20,14 @@ struct Constants {
 
 // parameters
 // vertices - a pointer to a vertices array created in the function initalization
-// &constant - constant space as opposed to device space, Constant time property, &constants variable name; constant struct byte are allocated to buffer 1
+// &constant - constant space as opposed to device space, Constant is the time property, &constants variable name; constant struct byte are allocated to buffer 1
 // vertexId - the id of the current vertex being processed by the GPU
 
 // return
 // float4 returns current vertex from vertices array the GPU is processing
 
 // the output of this function is the input in the next stage of the pipeline
-// the GUP assembles teh vertices into triangle primitives
+// the GUP assembles the vertices into triangle primitives
 // the rasterizer takes over and splits the triangle into fragments
 // the fragment function function returns the color of each fragment
 

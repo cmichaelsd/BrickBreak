@@ -21,7 +21,7 @@ class Renderer: NSObject {
         1,  1, 0, // V3
     ]
     
-    // create indices which reference which 3 vertices to use from the vertices array
+    // create indices which reference which 4 vertices to use from the vertices array
     var indices: [UInt16] = [
         0, 1, 2,
         2, 3, 0
