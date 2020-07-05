@@ -43,6 +43,9 @@ class Plane: Node {
     // Texturable
     var texture: MTLTexture?
     
+    // mask texture
+    var maskTexture: MTLTexture?
+    
     // create vertices and do not repeat vertices
     var vertices: [Vertex] = [
         Vertex(position: SIMD3<Float>(-1, 1, 0), color: SIMD4<Float>(1, 0, 0, 1), texture: SIMD2<Float>(0, 1)),  // V0
@@ -68,13 +71,23 @@ class Plane: Node {
     
     var time: Float = 0
     
-    init(device: MTLDevice, imageName: String) {
+    init(device: MTLDevice, imageName: String, maskImageName: String?) {
         super.init()
+        buildBuffers(device: device)
+        
         if let texture = setTexture(device: device, imageName: imageName) {
             self.texture = texture
             fragmentFunctionName = "textured_fragment"
         }
-        buildBuffers(device: device)
+        
+        if (maskImageName != nil) {
+            if let maskTexture = setTexture(device: device, imageName: maskImageName!) {
+                self.maskTexture = maskTexture
+                fragmentFunctionName = "textured_mask_fragment"
+            }
+        }
+        
+        
         pipelineState = buildPipelineState(device: device)
     }
     
@@ -103,6 +116,11 @@ class Plane: Node {
         
         // set texture of fragment to texture at fragment index 0
         commandEncoder.setFragmentTexture(texture, index: 0)
+        
+        if (maskTexture != nil) {
+            // set mask textures fragment at the next available index
+            commandEncoder.setFragmentTexture(maskTexture, index: 1)
+        }
         
         // use indices instead of vertex for drawing, saves memory
         // commandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
