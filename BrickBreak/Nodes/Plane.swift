@@ -67,7 +67,7 @@ class Plane: Node {
     
     var time: Float = 0
     
-    init(device: MTLDevice, imageName: String, maskImageName: String?) {
+    init(device: MTLDevice, imageName: String, maskImageName: String) {
         super.init()
         buildBuffers(device: device)
         
@@ -76,13 +76,22 @@ class Plane: Node {
             fragmentFunctionName = "textured_fragment"
         }
         
-        if (maskImageName != nil) {
-            if let maskTexture = setTexture(device: device, imageName: maskImageName!) {
-                self.maskTexture = maskTexture
-                fragmentFunctionName = "textured_mask_fragment"
-            }
+        if let maskTexture = setTexture(device: device, imageName: maskImageName) {
+            self.maskTexture = maskTexture
+            fragmentFunctionName = "textured_mask_fragment"
         }
         
+        pipelineState = buildPipelineState(device: device)
+    }
+    
+    init(device: MTLDevice, imageName: String) {
+        super.init()
+        buildBuffers(device: device)
+        
+        if let texture = setTexture(device: device, imageName: imageName) {
+            self.texture = texture
+            fragmentFunctionName = "textured_fragment"
+        }
         
         pipelineState = buildPipelineState(device: device)
     }
@@ -92,28 +101,11 @@ class Plane: Node {
         vertexBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<Vertex>.stride, options: [])
         indexBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<UInt16>.size, options: [])
     }
-    
-    override func render(commandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
-        super.render(commandEncoder: commandEncoder, deltaTime: deltaTime)
-        
+}
+
+extension Plane: Renderable {
+    func doRender(commandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
         guard let indexBuffer = indexBuffer else { return }
-        
-        time += deltaTime
-        
-        let animateBy = abs(sin(time) / 2 + 0.5)
-        
-        // a type of model matrix defining over time the models position w/ a rotation
-        let rotationMatrix = matrix_float4x4(rotationAngle: animateBy, x: 0, y: 0, z: 1)
-        
-        // create a view matrix 4 units backward
-        let viewMatrix = matrix_float4x4(translationX: 0, y: 0, z: -4)
-        
-        // render the model correctly for the view matrix
-        // model matrix (rotationMatrix) * view matrix, the position of the model in 'camera space'
-        // clipping space is between 0 and 1 in z
-        let modelViewMatrix = matrix_multiply(rotationMatrix, viewMatrix)
-        // tell the model its position in camera space
-        modelConstants.modelViewMatrix = modelViewMatrix
         
         // phones aspect ratio
         let aspect = Float(750.0/1334.0)
@@ -134,10 +126,8 @@ class Plane: Node {
         // set texture of fragment to texture at fragment index 0
         commandEncoder.setFragmentTexture(texture, index: 0)
         
-        if (maskTexture != nil) {
-            // set mask textures fragment at the next available index
-            commandEncoder.setFragmentTexture(maskTexture, index: 1)
-        }
+        // set mask textures fragment at the next available index
+        commandEncoder.setFragmentTexture(maskTexture, index: 1)
         
         // use indices instead of vertex for drawing, saves memory
         // commandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
@@ -150,7 +140,5 @@ class Plane: Node {
         )
     }
 }
-
-extension Plane: Renderable {}
 
 extension Plane: Texturable {}

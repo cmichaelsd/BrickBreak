@@ -17,4 +17,14 @@ class Scene: Node {
         self.size = size
         super.init()
     }
+    
+    func render(commandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
+        // create a matrix as a camera removed -4 on teh z
+        let viewMatrix = matrix_float4x4(translationX: 0, y: 0, z: -4)
+        
+        for child in children {
+            // recurse and send the newly created view matrix to each child Node
+            child.render(commandEncoder: commandEncoder, parentModelViewMatrix: viewMatrix)
+        }
+    }
 }
