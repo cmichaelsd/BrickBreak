@@ -9,9 +9,8 @@
 #include <metal_stdlib>
 using namespace metal;
 
-// define the constant structure used in Render.swift so the shader function can recognize it
-struct Constants {
-    float animateBy;
+struct ModelConstants {
+    float4x4 modelViewMatrix;
 };
 
 // define the vertex structure used in Types
@@ -45,10 +44,13 @@ struct VertexOut {
 // the fragment function function returns the color of each fragment
 
 // processes the real position of each vertex
-vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]]) {
+vertex VertexOut vertex_shader(
+    const VertexIn vertexIn [[ stage_in ]],
+    constant ModelConstants &modelConstants [[ buffer(1) ]]
+) {
     
     VertexOut vertexOut;
-    vertexOut.position = vertexIn.position;
+    vertexOut.position = modelConstants.modelViewMatrix * vertexIn.position;
     vertexOut.color = vertexIn.color;
     vertexOut.textureCoordinates = vertexIn.textureCoordinates;
     

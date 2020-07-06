@@ -18,6 +18,7 @@
 		204806AD24B132F0006C27D0 /* picture-frame-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 204806AA24B132F0006C27D0 /* picture-frame-mask.png */; };
 		204806AE24B132F0006C27D0 /* picture-frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 204806AB24B132F0006C27D0 /* picture-frame.png */; };
 		204806AF24B132F0006C27D0 /* picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 204806AC24B132F0006C27D0 /* picture.png */; };
+		2048A88A24B1C6A500D0EBAD /* MatrixMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2048A88924B1C6A500D0EBAD /* MatrixMath.swift */; };
 		20D7304124B01F5600028FE8 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304024B01F5600028FE8 /* Scene.swift */; };
 		20D7304324B01F6500028FE8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304224B01F6500028FE8 /* GameScene.swift */; };
 		20D7304524B01F7600028FE8 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304424B01F7600028FE8 /* Node.swift */; };
@@ -41,6 +42,7 @@
 		204806AA24B132F0006C27D0 /* picture-frame-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-frame-mask.png"; sourceTree = "<group>"; };
 		204806AB24B132F0006C27D0 /* picture-frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-frame.png"; sourceTree = "<group>"; };
 		204806AC24B132F0006C27D0 /* picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture.png; sourceTree = "<group>"; };
+		2048A88924B1C6A500D0EBAD /* MatrixMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixMath.swift; sourceTree = "<group>"; };
 		20D7304024B01F5600028FE8 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		20D7304224B01F6500028FE8 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		20D7304424B01F7600028FE8 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				201E12AE24AFB3BD00C01F47 /* Renderer.swift */,
 				20D7304A24B0497400028FE8 /* Types.swift */,
 				201E12B024AFB88B00C01F47 /* Shader.metal */,
+				2048A88924B1C6A500D0EBAD /* MatrixMath.swift */,
 				201E129E24AFB3AF00C01F47 /* ViewController.swift */,
 				201E12A024AFB3AF00C01F47 /* Main.storyboard */,
 				201E12A324AFB3B000C01F47 /* Assets.xcassets */,
@@ -213,6 +216,7 @@
 				201E12B124AFB88B00C01F47 /* Shader.metal in Sources */,
 				20D7304324B01F6500028FE8 /* GameScene.swift in Sources */,
 				201E129D24AFB3AF00C01F47 /* SceneDelegate.swift in Sources */,
+				2048A88A24B1C6A500D0EBAD /* MatrixMath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

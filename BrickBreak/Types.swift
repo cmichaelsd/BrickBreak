@@ -13,3 +13,11 @@ struct Vertex {
     var color: SIMD4<Float>
     var texture: SIMD2<Float>
 }
+
+// each model will get a ModelConstant which will define a models relation to world space
+// before sending model to the GPU multiply model matrix by view matrix to get model view matrix
+// this result is the models position in 'camera space'
+// multiply any matrix by and identity matrix and you get the same matrix back
+struct ModelConstants {
+    var modelViewMatrix = matrix_identity_float4x4
+}

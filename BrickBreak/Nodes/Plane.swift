@@ -63,11 +63,7 @@ class Plane: Node {
     var vertexBuffer: MTLBuffer?
     var indexBuffer: MTLBuffer?
     
-    struct Constants {
-        var animateBy: Float = 0.0
-    }
-    
-    var constants = Constants()
+    var modelConstants = ModelConstants()
     
     var time: Float = 0
     
@@ -105,11 +101,32 @@ class Plane: Node {
         time += deltaTime
         
         let animateBy = abs(sin(time) / 2 + 0.5)
-        constants.animateBy = animateBy
+        
+        // a type of model matrix defining over time the models position w/ a rotation
+        let rotationMatrix = matrix_float4x4(rotationAngle: animateBy, x: 0, y: 0, z: 1)
+        
+        // create a view matrix 4 units backward
+        let viewMatrix = matrix_float4x4(translationX: 0, y: 0, z: -4)
+        
+        // render the model correctly for the view matrix
+        // model matrix (rotationMatrix) * view matrix, the position of the model in 'camera space'
+        // clipping space is between 0 and 1 in z
+        let modelViewMatrix = matrix_multiply(rotationMatrix, viewMatrix)
+        // tell the model its position in camera space
+        modelConstants.modelViewMatrix = modelViewMatrix
+        
+        // phones aspect ratio
+        let aspect = Float(750.0/1334.0)
+        
+        // create ability to have depth, near is 0.1, far is 100
+        let projectionMatrix = matrix_float4x4(projectionFov: radians(fromDegrees: 65), aspect: aspect, nearZ: 0.1, farZ: 100)
+        
+        // multiply projection matrix by model view matrix to get the new model view matrix with depth
+        modelConstants.modelViewMatrix = matrix_multiply(projectionMatrix, modelViewMatrix)
         
         commandEncoder.setRenderPipelineState(pipelineState)
         
-        commandEncoder.setVertexBytes(&constants, length: MemoryLayout<Constants>.stride, index: 1)
+        commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, index: 1)
         
         // send the Metal buffer to the GPU, these vertices will be referenced by the indexed draw below
         commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
