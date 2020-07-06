@@ -19,6 +19,7 @@ class Scene: Node {
     }
     
     func render(commandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
+        update(deltaTime: deltaTime)
         // create a matrix as a camera removed -4 on teh z
         let viewMatrix = matrix_float4x4(translationX: 0, y: 0, z: -4)
         
@@ -27,4 +28,6 @@ class Scene: Node {
             child.render(commandEncoder: commandEncoder, parentModelViewMatrix: viewMatrix)
         }
     }
+    
+    func update(deltaTime: Float) {}
 }
