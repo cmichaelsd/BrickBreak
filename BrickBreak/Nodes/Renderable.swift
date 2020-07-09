@@ -31,6 +31,7 @@ extension Renderable {
         pipelineDescriptor.vertexFunction = vertexFunction
         pipelineDescriptor.fragmentFunction = fragmentFunction
         pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+        pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
         // assign vertex descriptor to pipline vertex descriptor
         pipelineDescriptor.vertexDescriptor = vertexDescriptor
         

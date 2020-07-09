@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         device = metalView.device
         
         metalView.clearColor = Colors.green
+        metalView.depthStencilPixelFormat = .depth32Float
         
         renderer = Renderer(device: device)
         renderer?.scene = GameScene(device: device, size: view.bounds.size)

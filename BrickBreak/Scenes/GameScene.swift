@@ -10,24 +10,20 @@ import MetalKit
 
 class GameScene: Scene {
     var quad: Plane
+    var cube: Cube
     
     override init(device: MTLDevice, size: CGSize) {
         quad = Plane(device: device, imageName: "picture.png")
+        cube = Cube(device: device)
         super.init(device: device, size: size)
+        add(childNode: cube)
         add(childNode: quad)
         
-        quad.position.x = 0
-        quad.position.y = 0
-        
-        let quad2 = Plane(device: device, imageName: "picture.png")
-        
-        quad2.scale = SIMD3<Float>(repeating: 0.5)
-        quad2.position.y = 1.5
-        
-        quad.add(childNode: quad2)
+        quad.position.z = -3
+        quad.scale = SIMD3<Float>(repeating: 3)
     }
     
     override func update(deltaTime: Float) {
-        quad.rotation.y += deltaTime
+        cube.rotation.y += deltaTime
     }
 }
