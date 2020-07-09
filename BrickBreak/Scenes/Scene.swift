@@ -9,6 +9,8 @@
 import MetalKit
 
 class Scene: Node {
+    var camera = Camera()
+    var sceneConstants = SceneConstants()
     var device: MTLDevice
     var size: CGSize
     
@@ -16,16 +18,21 @@ class Scene: Node {
         self.device = device
         self.size = size
         super.init()
+        
+        camera.aspect = Float(size.width / size.height)
+        camera.position.z = -6
+        add(childNode: camera)
     }
     
     func render(commandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
         update(deltaTime: deltaTime)
-        // create a matrix as a camera removed -4 on teh z
-        let viewMatrix = matrix_float4x4(translationX: 0, y: 0, z: -4)
+        
+        sceneConstants.projectionMatrix = camera.projectionMatrix
+        commandEncoder.setVertexBytes(&sceneConstants, length: MemoryLayout<SceneConstants>.stride, index: 2)
         
         for child in children {
             // recurse and send the newly created view matrix to each child Node
-            child.render(commandEncoder: commandEncoder, parentModelViewMatrix: viewMatrix)
+            child.render(commandEncoder: commandEncoder, parentModelViewMatrix: camera.viewMatrix)
         }
     }
     

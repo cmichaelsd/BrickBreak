@@ -21,6 +21,7 @@
 		2048A88A24B1C6A500D0EBAD /* MatrixMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2048A88924B1C6A500D0EBAD /* MatrixMath.swift */; };
 		206610BB24B6AE9400FD7F4B /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206610BA24B6AE9400FD7F4B /* Primitive.swift */; };
 		206610BD24B6B05600FD7F4B /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206610BC24B6B05600FD7F4B /* Cube.swift */; };
+		206610C124B6E7F800FD7F4B /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206610C024B6E7F800FD7F4B /* Camera.swift */; };
 		20D7304124B01F5600028FE8 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304024B01F5600028FE8 /* Scene.swift */; };
 		20D7304324B01F6500028FE8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304224B01F6500028FE8 /* GameScene.swift */; };
 		20D7304524B01F7600028FE8 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304424B01F7600028FE8 /* Node.swift */; };
@@ -47,6 +48,7 @@
 		2048A88924B1C6A500D0EBAD /* MatrixMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixMath.swift; sourceTree = "<group>"; };
 		206610BA24B6AE9400FD7F4B /* Primitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
 		206610BC24B6B05600FD7F4B /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
+		206610C024B6E7F800FD7F4B /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		20D7304024B01F5600028FE8 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		20D7304224B01F6500028FE8 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		20D7304424B01F7600028FE8 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				20D7304424B01F7600028FE8 /* Node.swift */,
 				206610BA24B6AE9400FD7F4B /* Primitive.swift */,
 				20D7304C24B0531F00028FE8 /* Renderable.swift */,
+				206610C024B6E7F800FD7F4B /* Camera.swift */,
 				206610BC24B6B05600FD7F4B /* Cube.swift */,
 				20D7304624B01F7F00028FE8 /* Plane.swift */,
 				20D7305024B07A6500028FE8 /* Texturable.swift */,
@@ -210,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				206610C124B6E7F800FD7F4B /* Camera.swift in Sources */,
 				201E12AF24AFB3BD00C01F47 /* Renderer.swift in Sources */,
 				20D7304724B01F7F00028FE8 /* Plane.swift in Sources */,
 				201E129F24AFB3AF00C01F47 /* ViewController.swift in Sources */,

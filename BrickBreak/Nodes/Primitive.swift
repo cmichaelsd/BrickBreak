@@ -110,14 +110,8 @@ extension Primitive: Renderable {
     func doRender(commandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
         guard let indexBuffer = indexBuffer else { return }
         
-        // phones aspect ratio
-        let aspect = Float(1242.0/2688.0)
-        
-        // create ability to have depth, near is 0.1, far is 100
-        let projectionMatrix = matrix_float4x4(projectionFov: radians(fromDegrees: 65), aspect: aspect, nearZ: 0.1, farZ: 100)
-        
         // multiply projection matrix by model view matrix to get the new model view matrix with depth
-        modelConstants.modelViewMatrix = matrix_multiply(projectionMatrix, modelViewMatrix)
+        modelConstants.modelViewMatrix = modelViewMatrix
         
         commandEncoder.setRenderPipelineState(pipelineState)
         

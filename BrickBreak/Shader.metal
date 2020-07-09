@@ -26,6 +26,10 @@ struct VertexOut {
     float2 textureCoordinates;
 };
 
+struct SceneConstants {
+    float4x4 projectionMatrix;
+};
+
 // vertex is the type of function
 // return type is float4
 // function name is vertex_shader
@@ -46,11 +50,13 @@ struct VertexOut {
 // processes the real position of each vertex
 vertex VertexOut vertex_shader(
     const VertexIn vertexIn [[ stage_in ]],
-    constant ModelConstants &modelConstants [[ buffer(1) ]]
+    constant ModelConstants &modelConstants [[ buffer(1) ]],
+    constant SceneConstants &sceneConstants [[ buffer(2) ]]
 ) {
     
     VertexOut vertexOut;
-    vertexOut.position = modelConstants.modelViewMatrix * vertexIn.position;
+    float4x4 matrix = sceneConstants.projectionMatrix * modelConstants.modelViewMatrix;
+    vertexOut.position = matrix * vertexIn.position;
     vertexOut.color = vertexIn.color;
     vertexOut.textureCoordinates = vertexIn.textureCoordinates;
     
