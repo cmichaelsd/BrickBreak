@@ -14,6 +14,7 @@ class Primitive: Node {
     var pipelineState: MTLRenderPipelineState!
     var fragmentFunctionName: String = "fragment_shader"
     var vertexFunctionName: String = "vertex_shader"
+    var modelConstants = ModelConstants()
     var vertexDescriptor: MTLVertexDescriptor {
         let vertexDescriptor = MTLVertexDescriptor()
         
@@ -54,8 +55,6 @@ class Primitive: Node {
     
     var vertexBuffer: MTLBuffer?
     var indexBuffer: MTLBuffer?
-    
-    var modelConstants = ModelConstants()
     
     var time: Float = 0
     
