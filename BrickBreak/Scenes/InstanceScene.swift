@@ -10,12 +10,14 @@ import MetalKit
 
 class InstanceScene: Scene {
     var humans: Instance
+    var instances: Int
     
     override init(device: MTLDevice, size: CGSize) {
-        humans = Instance(device: device, modelName: "humanFigure", instances: 40)
+        instances = 40
+        humans = Instance(device: device, modelName: "humanFigure", instances: instances)
         super.init(device: device, size: size)
         add(childNode: humans)
-        for _ in 0..<40 {
+        for _ in 0..<instances {
             for human in humans.nodes {
                 human.scale = SIMD3<Float>(repeating: Float(arc4random_uniform(5)) / 10)
                 human.position.x = Float(arc4random_uniform(5)) - 2

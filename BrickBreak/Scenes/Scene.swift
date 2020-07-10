@@ -19,7 +19,6 @@ class Scene: Node {
         self.size = size
         super.init()
         
-        camera.aspect = Float(size.width / size.height)
         camera.position.z = -6
         add(childNode: camera)
     }
@@ -37,4 +36,8 @@ class Scene: Node {
     }
     
     func update(deltaTime: Float) {}
+    
+    func sceneSizeWillChange(to size: CGSize) {
+        camera.aspect = Float(size.width / size.height)
+    }
 }

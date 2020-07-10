@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         metalView.depthStencilPixelFormat = .depth32Float
         
         renderer = Renderer(device: device)
-        renderer?.scene = InstanceScene(device: device, size: view.bounds.size)
+        renderer?.scene = LandscapeScene(device: device, size: view.bounds.size)
         
         metalView.delegate = renderer
     }

@@ -12,7 +12,7 @@ class Primitive: Node {
     
     // Renderable
     var pipelineState: MTLRenderPipelineState!
-    var fragmentFunctionName: String = "fragment_shader"
+    var fragmentFunctionName: String = "fragment_color"
     var vertexFunctionName: String = "vertex_shader"
     var modelConstants = ModelConstants()
     var vertexDescriptor: MTLVertexDescriptor {
@@ -111,6 +111,7 @@ extension Primitive: Renderable {
         
         // multiply projection matrix by model view matrix to get the new model view matrix with depth
         modelConstants.modelViewMatrix = modelViewMatrix
+        modelConstants.materialColor = materialColor
         
         commandEncoder.setRenderPipelineState(pipelineState)
         

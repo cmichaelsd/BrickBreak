@@ -41,6 +41,7 @@
 		20D7304B24B0497400028FE8 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304A24B0497400028FE8 /* Types.swift */; };
 		20D7304D24B0531F00028FE8 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304C24B0531F00028FE8 /* Renderable.swift */; };
 		20D7305124B07A6500028FE8 /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7305024B07A6500028FE8 /* Texturable.swift */; };
+		20F3301624B853F80012D204 /* grass.obj in Resources */ = {isa = PBXBuildFile; fileRef = 20F3301524B853F80012D204 /* grass.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		20D7304A24B0497400028FE8 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		20D7304C24B0531F00028FE8 /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 		20D7305024B07A6500028FE8 /* Texturable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
+		20F3301524B853F80012D204 /* grass.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grass.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 		20416BBE24B783E1005CF8B8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				20F3301424B853F80012D204 /* grass */,
 				209D195B24B8348C00681958 /* sun */,
 				20416BC324B78408005CF8B8 /* humanFigure */,
 				20416BC524B78408005CF8B8 /* mushroom */,
@@ -215,6 +218,14 @@
 			path = Nodes;
 			sourceTree = "<group>";
 		};
+		20F3301424B853F80012D204 /* grass */ = {
+			isa = PBXGroup;
+			children = (
+				20F3301524B853F80012D204 /* grass.obj */,
+			);
+			path = grass;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -277,6 +288,7 @@
 				201E12A724AFB3B000C01F47 /* LaunchScreen.storyboard in Resources */,
 				204806AE24B132F0006C27D0 /* picture-frame.png in Resources */,
 				20416BCB24B78408005CF8B8 /* humanFigure.obj in Resources */,
+				20F3301624B853F80012D204 /* grass.obj in Resources */,
 				204806AF24B132F0006C27D0 /* picture.png in Resources */,
 				201E12A424AFB3B000C01F47 /* Assets.xcassets in Resources */,
 				204806AD24B132F0006C27D0 /* picture-frame-mask.png in Resources */,
