@@ -19,7 +19,5 @@ class LandscapeScene: Scene {
         add(childNode: sun)
     }
     
-    override func update(deltaTime: Float) {
-        
-    }
+    override func update(deltaTime: Float) {}
 }

@@ -66,6 +66,24 @@ vertex VertexOut vertex_shader(
     return vertexOut;
 }
 
+vertex VertexOut vertex_instance_shader(
+    const VertexIn vertexIn [[ stage_in ]],
+    constant ModelConstants *instances [[ buffer(1) ]],
+    constant SceneConstants &sceneConstants [[ buffer(2) ]],
+    uint instanceId [[ instance_id ]]
+) {
+    ModelConstants modelConstants = instances[instanceId];
+    
+    VertexOut vertexOut;
+    float4x4 matrix = sceneConstants.projectionMatrix * modelConstants.modelViewMatrix;
+    vertexOut.position = matrix * vertexIn.position;
+    vertexOut.color = vertexIn.color;
+    vertexOut.textureCoordinates = vertexIn.textureCoordinates;
+    vertexOut.materialColor = modelConstants.materialColor;
+    
+    return vertexOut;
+}
+
 // fragment is the type
 // return type is half4
 // function name is fragment_shader
