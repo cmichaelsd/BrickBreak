@@ -16,7 +16,7 @@ class Model: Node {
     
     // Renderable
     var pipelineState: MTLRenderPipelineState!
-    var fragmentFunctionName: String = "fragment_shader"
+    var fragmentFunctionName: String = "fragment_color"
     var vertexFunctionName: String = "vertex_shader"
     var modelConstants = ModelConstants()
     var vertexDescriptor: MTLVertexDescriptor {
@@ -102,6 +102,9 @@ class Model: Node {
 extension Model: Renderable {
     func doRender(commandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
         modelConstants.modelViewMatrix = modelViewMatrix
+        
+        modelConstants.materialColor = materialColor
+
         
         commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, index: 1)
         

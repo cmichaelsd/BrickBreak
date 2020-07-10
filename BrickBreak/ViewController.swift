@@ -15,6 +15,12 @@ enum Colors {
         blue: 0.21,
         alpha: 1.0
     )
+    static let skyBlue = MTLClearColor(
+        red: 0.66,
+        green: 0.9,
+        blue: 0.96,
+        alpha: 1.0
+    )
 }
 
 class ViewController: UIViewController {
@@ -32,11 +38,11 @@ class ViewController: UIViewController {
         metalView.device = MTLCreateSystemDefaultDevice()
         device = metalView.device
         
-        metalView.clearColor = Colors.green
+        metalView.clearColor = Colors.skyBlue
         metalView.depthStencilPixelFormat = .depth32Float
         
         renderer = Renderer(device: device)
-        renderer?.scene = GameScene(device: device, size: view.bounds.size)
+        renderer?.scene = LandscapeScene(device: device, size: view.bounds.size)
         
         metalView.delegate = renderer
     }

@@ -13,6 +13,8 @@ class Node {
     var name = "Untitled"
     var children: [Node] = []
     
+    var materialColor = SIMD4<Float>(repeating: 1)
+    
     var position = SIMD3<Float>(repeating: 0)
     var rotation = SIMD3<Float>(repeating: 0)
     var scale = SIMD3<Float>(repeating: 1)

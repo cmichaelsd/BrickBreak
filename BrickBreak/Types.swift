@@ -20,6 +20,7 @@ struct Vertex {
 // multiply any matrix by and identity matrix and you get the same matrix back
 struct ModelConstants {
     var modelViewMatrix = matrix_identity_float4x4
+    var materialColor = SIMD4<Float>(repeating: 1)
 }
 
 struct SceneConstants {
