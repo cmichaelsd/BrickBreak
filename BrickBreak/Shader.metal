@@ -32,6 +32,11 @@ struct SceneConstants {
     float4x4 projectionMatrix;
 };
 
+struct Light {
+    float3 color;
+    float ambientIntensity;
+};
+
 // vertex is the type of function
 // return type is float4
 // function name is vertex_shader
@@ -131,4 +136,27 @@ fragment half4 textured_mask_fragment(
 
 fragment half4 fragment_color(VertexOut vertexIn [[ stage_in ]]) {
     return half4(vertexIn.materialColor);
+}
+
+// handles rendering fragments with lighting properties
+fragment half4 lit_textured_fragment(
+    VertexOut vertexIn [[ stage_in ]],
+    sampler sampler2d [[ sampler(0) ]],
+    constant Light &light [[ buffer(3) ]],
+    texture2d<float> texture [[ texture(0) ]]
+) {
+    
+    //extract color from current textures fragment coordinates
+    float4 color = texture.sample(sampler2d, vertexIn.textureCoordinates);
+    color = color * vertexIn.materialColor;
+    
+    // ambient
+    float3 ambientColor = light.color * light.ambientIntensity;
+    color = color * float4(ambientColor, 1);
+    
+    
+    if (color.a == 0.0)
+        discard_fragment();
+    
+    return half4(color.r, color.g, color.b, 1);
 }

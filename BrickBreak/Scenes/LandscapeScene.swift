@@ -68,7 +68,7 @@ class LandscapeScene: Scene {
         sun.position.x = 6
         sun.scale = SIMD3<Float>(repeating: 2)
 
-        camera.fovDegrees = 20
+        camera.fovDegrees = 25
         camera.rotation.x = radians(fromDegrees: -10)
         camera.position.z = -20
         camera.position.y = -2

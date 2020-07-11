@@ -29,20 +29,21 @@ class ViewController: UIViewController {
         return view as! MTKView
     }
     
-    var device: MTLDevice!
     var renderer: Renderer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         metalView.device = MTLCreateSystemDefaultDevice()
-        device = metalView.device
+        guard let device = metalView.device else {
+            fatalError("device not created")
+        }
         
-        metalView.clearColor = Colors.skyBlue
+        metalView.clearColor = Colors.green
         metalView.depthStencilPixelFormat = .depth32Float
         
         renderer = Renderer(device: device)
-        renderer?.scene = LandscapeScene(device: device, size: view.bounds.size)
+        renderer?.scene = LightingScene(device: device, size: view.bounds.size)
         
         metalView.delegate = renderer
     }

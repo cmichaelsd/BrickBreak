@@ -11,6 +11,7 @@ import MetalKit
 class Scene: Node {
     var camera = Camera()
     var sceneConstants = SceneConstants()
+    var light = Light()
     var device: MTLDevice
     var size: CGSize
     
@@ -27,7 +28,10 @@ class Scene: Node {
         update(deltaTime: deltaTime)
         
         sceneConstants.projectionMatrix = camera.projectionMatrix
+        
+        commandEncoder.setFragmentBytes(&light, length: MemoryLayout<Light>.stride, index: 3)
         commandEncoder.setVertexBytes(&sceneConstants, length: MemoryLayout<SceneConstants>.stride, index: 2)
+        
         
         for child in children {
             // recurse and send the newly created view matrix to each child Node

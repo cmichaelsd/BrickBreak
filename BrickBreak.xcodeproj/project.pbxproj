@@ -29,6 +29,7 @@
 		206610BB24B6AE9400FD7F4B /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206610BA24B6AE9400FD7F4B /* Primitive.swift */; };
 		206610BD24B6B05600FD7F4B /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206610BC24B6B05600FD7F4B /* Cube.swift */; };
 		206610C124B6E7F800FD7F4B /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206610C024B6E7F800FD7F4B /* Camera.swift */; };
+		207C950C24B977790077367A /* LightingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C950B24B977790077367A /* LightingScene.swift */; };
 		209D195D24B8348C00681958 /* sun.obj in Resources */ = {isa = PBXBuildFile; fileRef = 209D195C24B8348C00681958 /* sun.obj */; };
 		209D195F24B8353300681958 /* LandscapeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209D195E24B8353300681958 /* LandscapeScene.swift */; };
 		209D196124B83B8A00681958 /* CrowdScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209D196024B83B8A00681958 /* CrowdScene.swift */; };
@@ -69,6 +70,7 @@
 		206610BA24B6AE9400FD7F4B /* Primitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
 		206610BC24B6B05600FD7F4B /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		206610C024B6E7F800FD7F4B /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		207C950B24B977790077367A /* LightingScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightingScene.swift; sourceTree = "<group>"; };
 		209D195C24B8348C00681958 /* sun.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sun.obj; sourceTree = "<group>"; };
 		209D195E24B8353300681958 /* LandscapeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeScene.swift; sourceTree = "<group>"; };
 		209D196024B83B8A00681958 /* CrowdScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowdScene.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				20D7304024B01F5600028FE8 /* Scene.swift */,
+				207C950B24B977790077367A /* LightingScene.swift */,
 				209D195E24B8353300681958 /* LandscapeScene.swift */,
 				209D196424B845D800681958 /* InstanceScene.swift */,
 				20D7304224B01F6500028FE8 /* GameScene.swift */,
@@ -320,6 +323,7 @@
 				20D7304D24B0531F00028FE8 /* Renderable.swift in Sources */,
 				20D7304524B01F7600028FE8 /* Node.swift in Sources */,
 				209D196324B83F9200681958 /* Instance.swift in Sources */,
+				207C950C24B977790077367A /* LightingScene.swift in Sources */,
 				20D7305124B07A6500028FE8 /* Texturable.swift in Sources */,
 				20416BBD24B77B6D005CF8B8 /* Model.swift in Sources */,
 				201E129B24AFB3AF00C01F47 /* AppDelegate.swift in Sources */,
