@@ -12,6 +12,7 @@ using namespace metal;
 struct ModelConstants {
     float4x4 modelViewMatrix;
     float4 materialColor;
+    float3x3 normalMatrix;
 };
 
 // define the vertex structure used in Types
@@ -19,6 +20,7 @@ struct VertexIn {
     float4 position [[ attribute(0) ]];
     float4 color [[ attribute(1) ]];
     float2 textureCoordinates [[ attribute(2) ]];
+    float3 normal [[ attribute(3) ]];
 };
 
 struct VertexOut {
@@ -26,6 +28,7 @@ struct VertexOut {
     float4 color;
     float2 textureCoordinates;
     float4 materialColor;
+    float3 normal;
 };
 
 struct SceneConstants {
@@ -35,6 +38,8 @@ struct SceneConstants {
 struct Light {
     float3 color;
     float ambientIntensity;
+    float diffuseIntensity;
+    float3 direction;
 };
 
 // vertex is the type of function
@@ -67,6 +72,8 @@ vertex VertexOut vertex_shader(
     vertexOut.color = vertexIn.color;
     vertexOut.textureCoordinates = vertexIn.textureCoordinates;
     vertexOut.materialColor = modelConstants.materialColor;
+    
+    vertexOut.normal = modelConstants.normalMatrix * vertexIn.normal;
     
     return vertexOut;
 }
@@ -152,8 +159,14 @@ fragment half4 lit_textured_fragment(
     
     // ambient
     float3 ambientColor = light.color * light.ambientIntensity;
-    color = color * float4(ambientColor, 1);
     
+    // diffuse lighting
+    float3 normal = normalize(vertexIn.normal);
+    float diffuseFactor = saturate(-dot(normal, light.direction));
+    
+    float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor;
+    
+    color = color * float4(ambientColor + diffuseColor, 1);
     
     if (color.a == 0.0)
         discard_fragment();

@@ -20,8 +20,11 @@ class LightingScene: Scene {
         mushroom.position.y = -1
         add(childNode: mushroom)
         
-        light.color = SIMD3<Float>(arrayLiteral: 0.2, 0.4, 0.1)
-        light.ambientIntensity = 1.0
+        light.color = SIMD3<Float>(arrayLiteral: 1, 1, 1)
+        light.ambientIntensity = 0.2
+        light.diffuseIntensity = 0.8
+        // set lighting direction to point toward back of screen x, y, z - z negative goes inward
+        light.direction = SIMD3<Float>(arrayLiteral: 0, 0, -1)
     }
     override func update(deltaTime: Float) {}
     

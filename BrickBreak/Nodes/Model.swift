@@ -104,6 +104,8 @@ extension Model: Renderable {
         modelConstants.modelViewMatrix = modelViewMatrix
         
         modelConstants.materialColor = materialColor
+        
+        modelConstants.normalMatrix = modelViewMatrix.upperLeft3x3()
 
         
         commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, index: 1)
