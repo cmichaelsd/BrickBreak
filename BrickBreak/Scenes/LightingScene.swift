@@ -9,7 +9,10 @@
 import MetalKit
 
 class LightingScene: Scene {
+    
     let mushroom: Model
+    var previousTouchLocation: CGPoint = .zero
+    
     override init(device: MTLDevice, size: CGSize) {
         mushroom = Model(device: device, modelName: "mushroom")
         super.init(device: device, size: size)
@@ -17,10 +20,31 @@ class LightingScene: Scene {
         mushroom.position.y = -1
         add(childNode: mushroom)
         
-        light.color = SIMD3<Float>(arrayLiteral: 0, 0, 0.1)
-        light.ambientIntensity = 1.5
+        light.color = SIMD3<Float>(arrayLiteral: 0.2, 0.4, 0.1)
+        light.ambientIntensity = 1.0
     }
-    override func update(deltaTime: Float) {
+    override func update(deltaTime: Float) {}
+    
+    override func touchesBegan(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        previousTouchLocation = touch.location(in: view)
+    }
+    override func touchesMoved(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        let touchLocation = touch.location(in: view)
+        let delta = CGPoint(
+            x: previousTouchLocation.x - touchLocation.x,
+            y: previousTouchLocation.y - touchLocation.y
+        )
         
+        let sensitivity: Float = 0.01
+        mushroom.rotation.x += Float(delta.y) * sensitivity
+        mushroom.rotation.y += Float(delta.x) * sensitivity
+        
+        previousTouchLocation = touchLocation
     }
 }

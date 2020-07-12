@@ -20,6 +20,10 @@ class Scene: Node {
         self.size = size
         super.init()
         
+        // init correct aspect ratio so you do not have to wait for
+        // screen rotate to trigger aspect correction
+        camera.aspect = Float(size.width / size.height)
+        
         camera.position.z = -6
         add(childNode: camera)
     }
@@ -44,4 +48,9 @@ class Scene: Node {
     func sceneSizeWillChange(to size: CGSize) {
         camera.aspect = Float(size.width / size.height)
     }
+    
+    func touchesBegan(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) {}
+    func touchesMoved(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) {}
+    func touchesEnded(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) {}
+    func touchesCancelled(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) {}
 }
