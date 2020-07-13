@@ -30,6 +30,7 @@
 		2030F2AF24BC30BF00B833DF /* brick.png in Resources */ = {isa = PBXBuildFile; fileRef = 2030F2A324BC30BF00B833DF /* brick.png */; };
 		2030F2B324BC31F000B833DF /* bulletstorm_bg_v1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2030F2B124BC31F000B833DF /* bulletstorm_bg_v1.mp3 */; };
 		2030F2B424BC31F000B833DF /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2030F2B224BC31F000B833DF /* pop.wav */; };
+		2030F2B624BC4E2C00B833DF /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2030F2B524BC4E2C00B833DF /* SoundController.swift */; };
 		20416BBD24B77B6D005CF8B8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20416BBC24B77B6D005CF8B8 /* Model.swift */; };
 		20416BC824B78408005CF8B8 /* texturedCube.blend in Resources */ = {isa = PBXBuildFile; fileRef = 20416BC024B78408005CF8B8 /* texturedCube.blend */; };
 		20416BC924B78408005CF8B8 /* texturedCube.png in Resources */ = {isa = PBXBuildFile; fileRef = 20416BC124B78408005CF8B8 /* texturedCube.png */; };
@@ -86,6 +87,7 @@
 		2030F2A324BC30BF00B833DF /* brick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brick.png; sourceTree = "<group>"; };
 		2030F2B124BC31F000B833DF /* bulletstorm_bg_v1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bulletstorm_bg_v1.mp3; sourceTree = "<group>"; };
 		2030F2B224BC31F000B833DF /* pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop.wav; sourceTree = "<group>"; };
+		2030F2B524BC4E2C00B833DF /* SoundController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundController.swift; sourceTree = "<group>"; };
 		20416BBC24B77B6D005CF8B8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		20416BC024B78408005CF8B8 /* texturedCube.blend */ = {isa = PBXFileReference; lastKnownFileType = file; path = texturedCube.blend; sourceTree = "<group>"; };
 		20416BC124B78408005CF8B8 /* texturedCube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texturedCube.png; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				201E129C24AFB3AF00C01F47 /* SceneDelegate.swift */,
 				201E12AE24AFB3BD00C01F47 /* Renderer.swift */,
 				20D7304A24B0497400028FE8 /* Types.swift */,
+				2030F2B524BC4E2C00B833DF /* SoundController.swift */,
 				2030F29524BC309300B833DF /* Utilities.swift */,
 				201E12B024AFB88B00C01F47 /* Shader.metal */,
 				2048A88924B1C6A500D0EBAD /* MatrixMath.swift */,
@@ -399,6 +402,7 @@
 				20D7304524B01F7600028FE8 /* Node.swift in Sources */,
 				209D196324B83F9200681958 /* Instance.swift in Sources */,
 				2030F29624BC309300B833DF /* Utilities.swift in Sources */,
+				2030F2B624BC4E2C00B833DF /* SoundController.swift in Sources */,
 				207C950C24B977790077367A /* LightingScene.swift in Sources */,
 				20D7305124B07A6500028FE8 /* Texturable.swift in Sources */,
 				20416BBD24B77B6D005CF8B8 /* Model.swift in Sources */,

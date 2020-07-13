@@ -49,6 +49,8 @@ class ViewController: UIViewController {
         renderer?.scene = GameScene(device: device, size: view.bounds.size)
         
         metalView.delegate = renderer
+        
+        // SoundController.shared.playBackgroundMusic("bulletstorm_bg_v1.mp3")
     }
     
     override var prefersStatusBarHidden: Bool { return true }
