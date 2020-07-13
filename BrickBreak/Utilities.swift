@@ -9,7 +9,7 @@
 import simd
 
 // http://stackoverflow.com/questions/470690/how-to-automatically-generate-n-distinct-colors
-func color(number: Float) -> SIMD4<Float> {
+func color(number: Float) -> float4 {
     var x = number
     var r: Float = 0.0
     var g: Float = 0.0
@@ -42,11 +42,11 @@ func color(number: Float) -> SIMD4<Float> {
         b = x
     }
     
-    return SIMD4<Float>(r, g, b, 1.0)
+    return float4(r, g, b, 1.0)
 }
 
-func generateColors(number: Int) -> [SIMD4<Float>] {
-    var colors = [SIMD4<Float>](repeating: SIMD4<Float>(repeating: 0), count: number)
+func generateColors(number: Int) -> [float4] {
+    var colors = [float4](repeating: float4(repeating: 0), count: number)
     for i in 0..<number {
         colors[i] = color(number: (Float(number - i)) / Float(number))
     }

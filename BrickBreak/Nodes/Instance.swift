@@ -69,6 +69,10 @@ extension Instance: Renderable {
             pointer.pointee.modelViewMatrix = matrix_multiply(modelViewMatrix, node.modelMatrix)
             // set current model constant material color from node
             pointer.pointee.materialColor = node.materialColor
+            
+            pointer.pointee.normalMatrix = matrix_multiply(modelViewMatrix, node.modelMatrix).upperLeft3x3()
+            pointer.pointee.shininess = node.shininess
+            pointer.pointee.specularIntensity = node.specularIntensity
             // advance pointer by 1
             pointer = pointer.advanced(by: 1)
         }

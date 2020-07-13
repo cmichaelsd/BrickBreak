@@ -100,14 +100,12 @@ vertex VertexOut vertex_instance_shader(
     vertexOut.textureCoordinates = vertexIn.textureCoordinates;
     vertexOut.materialColor = modelConstants.materialColor;
     
-    // test
-//    vertexOut.shininess = modelConstants.shininess;
-//    vertexOut.specularIntensity = modelConstants.specularIntensity;
-//
-//    vertexOut.eyePosition = (modelConstants.modelViewMatrix * vertexIn.position).xyz;
-//
-//    vertexOut.normal = modelConstants.normalMatrix * vertexIn.normal;
-    // test
+    vertexOut.shininess = modelConstants.shininess;
+    vertexOut.specularIntensity = modelConstants.specularIntensity;
+
+    vertexOut.eyePosition = (modelConstants.modelViewMatrix * vertexIn.position).xyz;
+
+    vertexOut.normal = modelConstants.normalMatrix * vertexIn.normal;
     
     return vertexOut;
 }

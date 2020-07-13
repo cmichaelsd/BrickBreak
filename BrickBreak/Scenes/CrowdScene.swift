@@ -17,10 +17,10 @@ class CrowdScene: Scene {
             let human = Model(device: device, modelName: "humanFigure")
             humans.append(human)
             add(childNode: human)
-            human.scale = SIMD3<Float>(repeating: Float(arc4random_uniform(5)) / 10)
+            human.scale = float3(repeating: Float(arc4random_uniform(5)) / 10)
             human.position.x = Float(arc4random_uniform(5)) - 2
             human.position.y = Float(arc4random_uniform(5)) - 3
-            human.materialColor = SIMD4<Float>(arrayLiteral: Float(drand48()), Float(drand48()),Float(drand48()), 1)
+            human.materialColor = float4(arrayLiteral: Float(drand48()), Float(drand48()),Float(drand48()), 1)
         }
         
     }

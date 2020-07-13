@@ -7,6 +7,9 @@
 //
 
 import MetalKit
+typealias float4 = SIMD4<Float>
+typealias float3 = SIMD3<Float>
+typealias float2 = SIMD2<Float>
 
 enum Colors {
     static let green = MTLClearColor(

@@ -31,25 +31,25 @@ class LandscapeScene: Scene {
     override func update(deltaTime: Float) {}
     
     func setupScene() {
-        sun.materialColor = SIMD4<Float>(arrayLiteral: 1, 1, 0, 1)
+        sun.materialColor = float4(arrayLiteral: 1, 1, 0, 1)
     
-        ground.materialColor = SIMD4<Float>(arrayLiteral: 0.4, 0.3, 0.1, 1)
-        ground.scale = SIMD3<Float>(repeating: 20)
+        ground.materialColor = float4(arrayLiteral: 0.4, 0.3, 0.1, 1)
+        ground.scale = float3(repeating: 20)
         ground.rotation.x = radians(fromDegrees: 90)
         
         let greens = [
-            SIMD4<Float>(arrayLiteral: 0.34, 0.51, 0.01, 1),
-            SIMD4<Float>(arrayLiteral: 0.5, 0.5, 0, 1),
-            SIMD4<Float>(arrayLiteral: 0.29, 0.36, 0.14, 1)
+            float4(arrayLiteral: 0.34, 0.51, 0.01, 1),
+            float4(arrayLiteral: 0.5, 0.5, 0, 1),
+            float4(arrayLiteral: 0.29, 0.36, 0.14, 1)
         ]
         for row in 0..<100 {
             for column in 0..<100 {
-                var position = SIMD3<Float>(repeating: 0)
+                var position = float3(repeating: 0)
                 position.x = (Float(row)) / 4
                 position.z = (Float(column)) / 4
 
                 let blade = grass.nodes[row * 100 + column]
-                blade.scale = SIMD3<Float>(repeating: 0.5)
+                blade.scale = float3(repeating: 0.5)
                 blade.position = position
 
                 blade.materialColor = greens[Int(arc4random_uniform(3))]
@@ -62,11 +62,11 @@ class LandscapeScene: Scene {
         
         mushroom.position.x = -6
         mushroom.position.z = -8
-        mushroom.scale = SIMD3<Float>(repeating: 2)
+        mushroom.scale = float3(repeating: 2)
         
         sun.position.y = 7
         sun.position.x = 6
-        sun.scale = SIMD3<Float>(repeating: 2)
+        sun.scale = float3(repeating: 2)
 
         camera.fovDegrees = 25
         camera.rotation.x = radians(fromDegrees: -10)
