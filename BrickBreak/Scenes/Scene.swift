@@ -8,6 +8,10 @@
 
 import MetalKit
 
+protocol MetalSceneDelegate {
+    func transition(to scene: Scene)
+}
+
 class Scene: Node {
     var camera = Camera()
     var sceneConstants = SceneConstants()
@@ -15,14 +19,14 @@ class Scene: Node {
     var device: MTLDevice
     var size: CGSize
     
+    var sceneDelegate: MetalSceneDelegate?
+    
     init(device: MTLDevice, size: CGSize) {
         self.device = device
         self.size = size
         super.init()
         
-        // init correct aspect ratio so you do not have to wait for
-        // screen rotate to trigger aspect correction
-        camera.aspect = Float(size.width / size.height)
+        sceneSizeWillChange(to: size)
         
         camera.position.z = -6
         add(childNode: camera)

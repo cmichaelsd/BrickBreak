@@ -46,11 +46,14 @@ class ViewController: UIViewController {
         metalView.depthStencilPixelFormat = .depth32Float
         
         renderer = Renderer(device: device)
-        renderer?.scene = GameScene(device: device, size: view.bounds.size)
+        
+        let scene = GameScene(device: device, size: view.bounds.size)
+        scene.sceneDelegate = self
+        renderer?.scene = scene
         
         metalView.delegate = renderer
         
-        // SoundController.shared.playBackgroundMusic("bulletstorm_bg_v1.mp3")
+        SoundController.shared.playBackgroundMusic("bulletstorm_bg_v1.mp3")
     }
     
     override var prefersStatusBarHidden: Bool { return true }
@@ -69,5 +72,13 @@ class ViewController: UIViewController {
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         renderer?.scene?.touchesCancelled(view, touches: touches, with: event)
+    }
+}
+
+extension ViewController: MetalSceneDelegate {
+    func transition(to scene: Scene) {
+        scene.size = view.bounds.size
+        scene.sceneDelegate = self
+        renderer?.scene = scene
     }
 }

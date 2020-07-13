@@ -9,8 +9,6 @@
 import MetalKit
 
 class GameScene: Scene {
-    // debug
-    var previousTouchLocation: CGPoint = .zero
     
     enum Constants {
         static let gameHeight: Float = 48
@@ -24,13 +22,19 @@ class GameScene: Scene {
     
     let bricks: Instance
     
+    var previousTouchLocation: CGPoint = .zero
+    
+    var ballVelocityX: Float = 0
+    var ballVelocityY: Float = 0
+    
     override init(device: MTLDevice, size: CGSize) {
         ball = Model(device: device, modelName: "ball")
         paddle = Model(device: device, modelName: "paddle")
         bricks = Instance(device: device, modelName: "brick", instances: Constants.bricksPerRow * Constants.bricksPerColumn)
         super.init(device: device, size: size)
         
-        camera.position.z = -sceneOffset(height: Constants.gameHeight + 10, fov: camera.fovRadians)
+        let zMargin: Float = 10
+        camera.position.z = -sceneOffset(height: Constants.gameHeight + zMargin, fov: camera.fovRadians)
         camera.position.x = -Constants.gameWidth / 2
         camera.position.y = -Constants.gameHeight / 2
         camera.rotation.x = radians(fromDegrees: 20)
@@ -45,6 +49,9 @@ class GameScene: Scene {
     
     func setupScene() {
         // ball
+        ballVelocityX = 20
+        ballVelocityY = 15
+        
         ball.position.x = Constants.gameWidth / 2
         ball.position.y = Constants.gameHeight * 0.1
         ball.materialColor = float4(arrayLiteral: 0.5, 0.9, 0, 1)
@@ -84,9 +91,71 @@ class GameScene: Scene {
     }
     
     override func update(deltaTime: Float) {
+        
+        var bounced = false
+        
+        // brick animation
         for brick in bricks.nodes {
             brick.rotation.y += π / 4 * deltaTime
             brick.rotation.z += π / 4 * deltaTime
+        }
+        
+        // ball position
+        ball.position.x += ballVelocityX * deltaTime
+        ball.position.y += ballVelocityY * deltaTime
+        
+        // ball change velocity:
+        // top
+        if ball.position.y > Constants.gameHeight {
+            ball.position.y = Constants.gameHeight
+            ballVelocityY = -ballVelocityY
+            bounced = true
+        }
+        // left
+        if ball.position.x < 0 {
+            ball.position.x = 0
+            ballVelocityX = -ballVelocityX
+            bounced = true
+        }
+        // right
+        if ball.position.x > Constants.gameWidth {
+            ball.position.x = Constants.gameWidth
+            ballVelocityX = -ballVelocityX
+            bounced = true
+        }
+        // bottom
+        if ball.position.y < 0 {
+          endGame(win: false)
+        }
+        
+        // check paddle collision
+        let ballRect = ball.boundingBox(camera.viewMatrix)
+        let paddleRect = paddle.boundingBox(camera.viewMatrix)
+        
+        if ballRect.intersects(paddleRect) {
+            ballVelocityY = -ballVelocityY
+            bounced = true
+        }
+        
+        // check brick collision
+        for (index, brick) in bricks.nodes.enumerated() {
+            let brickRect = brick.boundingBox(camera.viewMatrix)
+            
+            if ballRect.intersects(brickRect) {
+                ballVelocityY = -ballVelocityY
+                bricks.remove(instance: index)
+                break
+            }
+        }
+        
+        // play bounced sound effect
+        if bounced {
+            SoundController.shared.playPopEffect()
+        }
+        
+        // all bricks are broken
+        if bricks.nodes.count == 0 {
+          endGame(win: true)
         }
     }
     
@@ -94,9 +163,12 @@ class GameScene: Scene {
         return (height / 2) / tan(fov / 2)
     }
     
+    func endGame(win: Bool) {
+        let gameOverScene = GameOverScene(device: device, size: size)
+        gameOverScene.win = win
+        sceneDelegate?.transition(to: gameOverScene)
+    }
     
-    
-    // debug
     override func touchesBegan(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else {
             return
@@ -112,10 +184,17 @@ class GameScene: Scene {
             x: previousTouchLocation.x - touchLocation.x,
             y: previousTouchLocation.y - touchLocation.y
         )
+        // set down distance traveled, touch coordinates arent the same as game coordinates
+        let deltaX = Float(delta.x) * (Constants.gameWidth / Float(size.width))
         
-        let sensitivity: Float = 0.01
-        camera.rotation.x += Float(delta.y) * sensitivity
-        camera.rotation.y += Float(delta.x) * sensitivity
+        // ensure paddle stays within border
+        // takes into account the paddles size
+        var newX = paddle.position.x + deltaX
+        newX = min(
+            max(newX, paddle.width / 2),
+            Constants.gameWidth - paddle.width / 2
+        )
+        paddle.position.x = newX
         
         previousTouchLocation = touchLocation
     }
