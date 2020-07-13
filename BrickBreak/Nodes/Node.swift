@@ -13,6 +13,9 @@ class Node {
     var name = "Untitled"
     var children: [Node] = []
     
+    var specularIntensity: Float = 1
+    var shininess: Float = 1
+    
     var materialColor = SIMD4<Float>(repeating: 1)
     
     var position = SIMD3<Float>(repeating: 0)

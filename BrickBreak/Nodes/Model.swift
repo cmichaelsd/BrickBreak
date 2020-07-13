@@ -22,6 +22,8 @@ class Model: Node {
     var vertexDescriptor: MTLVertexDescriptor {
         let vertexDescriptor = MTLVertexDescriptor()
         
+        // below the strides are multiplied by the number of floats used for the format
+        
         // describing the position attribute on the vertex structure
         vertexDescriptor.attributes[0].format = .float3
         vertexDescriptor.attributes[0].offset = 0
@@ -83,6 +85,8 @@ class Model: Node {
         attributeTexture.name = MDLVertexAttributeTextureCoordinate
         descriptor.attributes[2] = attributeTexture
         
+        // describe the normal
+        // normals are the orientation of a surface
         let attributeNormal = descriptor.attributes[3] as! MDLVertexAttribute
         attributeNormal.name = MDLVertexAttributeNormal
         descriptor.attributes[3] = attributeNormal
@@ -106,6 +110,10 @@ extension Model: Renderable {
         modelConstants.materialColor = materialColor
         
         modelConstants.normalMatrix = modelViewMatrix.upperLeft3x3()
+        
+        // set nodes specular attribues to model constants
+        modelConstants.shininess = shininess
+        modelConstants.specularIntensity = specularIntensity
 
         
         commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, index: 1)

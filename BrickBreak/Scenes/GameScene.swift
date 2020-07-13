@@ -10,17 +10,32 @@ import MetalKit
 
 class GameScene: Scene {
     
-    let mushroom: Model
+    enum Constants {
+        static let gameHeight: Float = 48
+        static let gameWidth: Float = 27
+    }
     
     override init(device: MTLDevice, size: CGSize) {
-        mushroom = Model(device: device, modelName: "mushroom")
         super.init(device: device, size: size)
+        
+        camera.position.z = -sceneOffset(height: Constants.gameHeight, fov: camera.fovRadians)
+        camera.position.x = -Constants.gameWidth / 2
+        camera.position.y = -Constants.gameHeight / 2
+        
+        let mushroom = Model(device: device, modelName: "mushroom")
         add(childNode: mushroom)
         
-        camera.position.z = -6
+        light.color = SIMD3<Float>(arrayLiteral: 1, 1, 1)
+        light.ambientIntensity = 0.3
+        light.diffuseIntensity = 0.8
+        light.direction = SIMD3<Float>(arrayLiteral: 0, -1, -1)
+        
     }
     
     override func update(deltaTime: Float) {
-        mushroom.rotation.y += deltaTime
+    }
+    
+    func sceneOffset(height: Float, fov: Float) -> Float {
+        return (height / 2) / tan(fov / 2)
     }
 }

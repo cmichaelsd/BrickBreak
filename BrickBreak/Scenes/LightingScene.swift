@@ -20,6 +20,9 @@ class LightingScene: Scene {
         mushroom.position.y = -1
         add(childNode: mushroom)
         
+        mushroom.specularIntensity = 0.5
+        mushroom.shininess = 1.0
+        
         light.color = SIMD3<Float>(arrayLiteral: 1, 1, 1)
         light.ambientIntensity = 0.2
         light.diffuseIntensity = 0.8

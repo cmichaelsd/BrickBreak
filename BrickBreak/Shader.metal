@@ -13,6 +13,8 @@ struct ModelConstants {
     float4x4 modelViewMatrix;
     float4 materialColor;
     float3x3 normalMatrix;
+    float shininess;
+    float specularIntensity;
 };
 
 // define the vertex structure used in Types
@@ -29,6 +31,9 @@ struct VertexOut {
     float2 textureCoordinates;
     float4 materialColor;
     float3 normal;
+    float shininess;
+    float specularIntensity;
+    float3 eyePosition;
 };
 
 struct SceneConstants {
@@ -72,8 +77,10 @@ vertex VertexOut vertex_shader(
     vertexOut.color = vertexIn.color;
     vertexOut.textureCoordinates = vertexIn.textureCoordinates;
     vertexOut.materialColor = modelConstants.materialColor;
-    
     vertexOut.normal = modelConstants.normalMatrix * vertexIn.normal;
+    vertexOut.shininess = modelConstants.shininess;
+    vertexOut.specularIntensity = modelConstants.specularIntensity;
+    vertexOut.eyePosition = (modelConstants.modelViewMatrix * vertexIn.position).xyz;
     
     return vertexOut;
 }
@@ -92,6 +99,15 @@ vertex VertexOut vertex_instance_shader(
     vertexOut.color = vertexIn.color;
     vertexOut.textureCoordinates = vertexIn.textureCoordinates;
     vertexOut.materialColor = modelConstants.materialColor;
+    
+    // test
+//    vertexOut.shininess = modelConstants.shininess;
+//    vertexOut.specularIntensity = modelConstants.specularIntensity;
+//
+//    vertexOut.eyePosition = (modelConstants.modelViewMatrix * vertexIn.position).xyz;
+//
+//    vertexOut.normal = modelConstants.normalMatrix * vertexIn.normal;
+    // test
     
     return vertexOut;
 }
@@ -166,7 +182,14 @@ fragment half4 lit_textured_fragment(
     
     float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor;
     
-    color = color * float4(ambientColor + diffuseColor, 1);
+    // Specular
+    float3 eye = normalize(vertexIn.eyePosition);
+    float3 reflection = reflect(light.direction, normal);
+    // if too powerful and plasic looking turn this variable down
+    float specularFactor = pow(saturate(-dot(reflection, eye)), vertexIn.shininess) / 5;
+    float3 specularColor = light.color * vertexIn.specularIntensity * specularFactor;
+    
+    color = color * float4(ambientColor + diffuseColor + specularColor, 1);
     
     if (color.a == 0.0)
         discard_fragment();

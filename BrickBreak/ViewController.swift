@@ -43,10 +43,12 @@ class ViewController: UIViewController {
         metalView.depthStencilPixelFormat = .depth32Float
         
         renderer = Renderer(device: device)
-        renderer?.scene = LightingScene(device: device, size: view.bounds.size)
+        renderer?.scene = GameScene(device: device, size: view.bounds.size)
         
         metalView.delegate = renderer
     }
+    
+    override var prefersStatusBarHidden: Bool { return true }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         renderer?.scene?.touchesBegan(view, touches:touches, with: event)
