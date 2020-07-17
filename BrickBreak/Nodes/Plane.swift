@@ -13,10 +13,10 @@ class Plane: Primitive {
     override func buildVertices() {
         // create vertices and do not repeat vertices
         vertices = [
-            Vertex(position: SIMD3<Float>(-1, 1, 0), color: SIMD4<Float>(1, 0, 0, 1), texture: SIMD2<Float>(0, 1)),  // V0
-            Vertex(position: SIMD3<Float>(-1, -1, 0), color: SIMD4<Float>(0, 1, 0, 1), texture: SIMD2<Float>(0, 0)), // V1
-            Vertex(position: SIMD3<Float>(1, -1, 0), color: SIMD4<Float>(0, 0, 1, 1), texture: SIMD2<Float>(1, 0)),  // V2
-            Vertex(position: SIMD3<Float>(1, 1, 0), color: SIMD4<Float>(1, 0, 1, 1), texture: SIMD2<Float>(1, 1)),   // V3
+            Vertex(position: float3(-1, 1, 0), color: float4(1, 0, 0, 1), texture: float2(0, 1)),  // V0
+            Vertex(position: float3(-1, -1, 0), color: float4(0, 1, 0, 1), texture: float2(0, 0)), // V1
+            Vertex(position: float3(1, -1, 0), color: float4(0, 0, 1, 1), texture: float2(1, 0)),  // V2
+            Vertex(position: float3(1, 1, 0), color: float4(1, 0, 1, 1), texture: float2(1, 1)),   // V3
         ]
         
         // create indices which reference which 4 vertices to use from the vertices array
