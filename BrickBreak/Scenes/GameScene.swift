@@ -33,11 +33,10 @@ class GameScene: Scene {
         bricks = Instance(device: device, modelName: "brick", instances: Constants.bricksPerRow * Constants.bricksPerColumn)
         super.init(device: device, size: size)
         
-        let zMargin: Float = 10
-        camera.position.z = -sceneOffset(height: Constants.gameHeight + zMargin, fov: camera.fovRadians)
+        camera.position.z = -sceneOffset(height: Constants.gameHeight, fov: camera.fovRadians)
         camera.position.x = -Constants.gameWidth / 2
-        camera.position.y = -Constants.gameHeight / 2
-        camera.rotation.x = radians(fromDegrees: 20)
+//        camera.position.y = -Constants.gameHeight / 2
+//        camera.rotation.x = radians(fromDegrees: 20)
         camera.position.y = -Constants.gameHeight / 2 + 5
         
         light.color = float3(arrayLiteral: 1, 1, 1)
