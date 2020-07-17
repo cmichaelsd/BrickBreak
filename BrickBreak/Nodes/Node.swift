@@ -16,11 +16,11 @@ class Node {
     var specularIntensity: Float = 1
     var shininess: Float = 1
     
-    var materialColor = SIMD4<Float>(repeating: 1)
+    var materialColor = float4(repeating: 1)
     
-    var position = SIMD3<Float>(repeating: 0)
-    var rotation = SIMD3<Float>(repeating: 0)
-    var scale = SIMD3<Float>(repeating: 1)
+    var position = float3(repeating: 0)
+    var rotation = float3(repeating: 0)
+    var scale = float3(repeating: 1)
     
     var width: Float = 1
     var height: Float = 1

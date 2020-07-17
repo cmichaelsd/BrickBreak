@@ -26,13 +26,13 @@ class Primitive: Node {
         // describing the color attribute on the vertex structure
         // offset by stride of first entry
         vertexDescriptor.attributes[1].format = .float4
-        vertexDescriptor.attributes[1].offset = MemoryLayout<SIMD3<Float>>.stride
+        vertexDescriptor.attributes[1].offset = MemoryLayout<float3>.stride
         vertexDescriptor.attributes[1].bufferIndex = 0
         
         // describing the texture on the vertex structure
         // offset by stride of first and second entry
         vertexDescriptor.attributes[2].format = .float2
-        vertexDescriptor.attributes[2].offset = MemoryLayout<SIMD3<Float>>.stride + MemoryLayout<SIMD4<Float>>.stride
+        vertexDescriptor.attributes[2].offset = MemoryLayout<float3>.stride + MemoryLayout<float4>.stride
         vertexDescriptor.attributes[2].bufferIndex = 0
         
         
