@@ -42,7 +42,7 @@ class Primitive: Node {
         
         
         // define the size of the vertex
-        vertexDescriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
+        vertexDescriptor.layouts[0].stride = MemoryLayout<Float>.stride * 12
         return vertexDescriptor
     }
     
