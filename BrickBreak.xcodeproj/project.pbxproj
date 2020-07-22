@@ -46,12 +46,18 @@
 		206610BB24B6AE9400FD7F4B /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206610BA24B6AE9400FD7F4B /* Primitive.swift */; };
 		206610BD24B6B05600FD7F4B /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206610BC24B6B05600FD7F4B /* Cube.swift */; };
 		206610C124B6E7F800FD7F4B /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206610C024B6E7F800FD7F4B /* Camera.swift */; };
+		207AEAC424C828A900AB1617 /* moon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 207AEAC324C828A900AB1617 /* moon.jpg */; };
 		207C950C24B977790077367A /* LightingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C950B24B977790077367A /* LightingScene.swift */; };
-		209D195D24B8348C00681958 /* sun.obj in Resources */ = {isa = PBXBuildFile; fileRef = 209D195C24B8348C00681958 /* sun.obj */; };
+		2082EE9624C6EAE20069ED3A /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EE9524C6EAE20069ED3A /* Planet.swift */; };
 		209D195F24B8353300681958 /* LandscapeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209D195E24B8353300681958 /* LandscapeScene.swift */; };
 		209D196124B83B8A00681958 /* CrowdScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209D196024B83B8A00681958 /* CrowdScene.swift */; };
 		209D196324B83F9200681958 /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209D196224B83F9200681958 /* Instance.swift */; };
 		209D196524B845D800681958 /* InstanceScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209D196424B845D800681958 /* InstanceScene.swift */; };
+		20C11FF724C7F44300774F88 /* sun.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 20C11FF424C7F44200774F88 /* sun.mtl */; };
+		20C11FF824C7F44300774F88 /* sun.obj in Resources */ = {isa = PBXBuildFile; fileRef = 20C11FF524C7F44200774F88 /* sun.obj */; };
+		20C11FF924C7F44300774F88 /* sun.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20C11FF624C7F44300774F88 /* sun.jpg */; };
+		20C11FFB24C7F49500774F88 /* earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20C11FFA24C7F49500774F88 /* earth.jpg */; };
+		20D6E36E24C5499D00C182CB /* SpaceScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D6E36D24C5499D00C182CB /* SpaceScene.swift */; };
 		20D7304124B01F5600028FE8 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304024B01F5600028FE8 /* Scene.swift */; };
 		20D7304324B01F6500028FE8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304224B01F6500028FE8 /* GameScene.swift */; };
 		20D7304524B01F7600028FE8 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304424B01F7600028FE8 /* Node.swift */; };
@@ -104,12 +110,18 @@
 		206610BA24B6AE9400FD7F4B /* Primitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
 		206610BC24B6B05600FD7F4B /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		206610C024B6E7F800FD7F4B /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		207AEAC324C828A900AB1617 /* moon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moon.jpg; sourceTree = "<group>"; };
 		207C950B24B977790077367A /* LightingScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightingScene.swift; sourceTree = "<group>"; };
-		209D195C24B8348C00681958 /* sun.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sun.obj; sourceTree = "<group>"; };
+		2082EE9524C6EAE20069ED3A /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		209D195E24B8353300681958 /* LandscapeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeScene.swift; sourceTree = "<group>"; };
 		209D196024B83B8A00681958 /* CrowdScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowdScene.swift; sourceTree = "<group>"; };
 		209D196224B83F9200681958 /* Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instance.swift; sourceTree = "<group>"; };
 		209D196424B845D800681958 /* InstanceScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceScene.swift; sourceTree = "<group>"; };
+		20C11FF424C7F44200774F88 /* sun.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sun.mtl; sourceTree = "<group>"; };
+		20C11FF524C7F44200774F88 /* sun.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sun.obj; sourceTree = "<group>"; };
+		20C11FF624C7F44300774F88 /* sun.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sun.jpg; sourceTree = "<group>"; };
+		20C11FFA24C7F49500774F88 /* earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = earth.jpg; sourceTree = "<group>"; };
+		20D6E36D24C5499D00C182CB /* SpaceScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceScene.swift; sourceTree = "<group>"; };
 		20D7304024B01F5600028FE8 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		20D7304224B01F6500028FE8 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		20D7304424B01F7600028FE8 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -253,7 +265,11 @@
 		209D195B24B8348C00681958 /* sun */ = {
 			isa = PBXGroup;
 			children = (
-				209D195C24B8348C00681958 /* sun.obj */,
+				20C11FF624C7F44300774F88 /* sun.jpg */,
+				20C11FF424C7F44200774F88 /* sun.mtl */,
+				207AEAC324C828A900AB1617 /* moon.jpg */,
+				20C11FF524C7F44200774F88 /* sun.obj */,
+				20C11FFA24C7F49500774F88 /* earth.jpg */,
 			);
 			path = sun;
 			sourceTree = "<group>";
@@ -263,6 +279,7 @@
 			children = (
 				20D7304024B01F5600028FE8 /* Scene.swift */,
 				207C950B24B977790077367A /* LightingScene.swift */,
+				20D6E36D24C5499D00C182CB /* SpaceScene.swift */,
 				2059CD4524BC729C00B7EC18 /* GameOverScene.swift */,
 				209D195E24B8353300681958 /* LandscapeScene.swift */,
 				209D196424B845D800681958 /* InstanceScene.swift */,
@@ -278,6 +295,7 @@
 				20D7304424B01F7600028FE8 /* Node.swift */,
 				206610BA24B6AE9400FD7F4B /* Primitive.swift */,
 				20D7304C24B0531F00028FE8 /* Renderable.swift */,
+				2082EE9524C6EAE20069ED3A /* Planet.swift */,
 				206610C024B6E7F800FD7F4B /* Camera.swift */,
 				20416BBC24B77B6D005CF8B8 /* Model.swift */,
 				206610BC24B6B05600FD7F4B /* Cube.swift */,
@@ -354,17 +372,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20C11FF724C7F44300774F88 /* sun.mtl in Resources */,
 				2030F2AB24BC30BF00B833DF /* ball.obj in Resources */,
 				20416BCA24B78408005CF8B8 /* texturedCube.obj in Resources */,
 				201E12A724AFB3B000C01F47 /* LaunchScreen.storyboard in Resources */,
 				2030F2AF24BC30BF00B833DF /* brick.png in Resources */,
 				204806AE24B132F0006C27D0 /* picture-frame.png in Resources */,
 				20416BCB24B78408005CF8B8 /* humanFigure.obj in Resources */,
+				207AEAC424C828A900AB1617 /* moon.jpg in Resources */,
 				20F3301624B853F80012D204 /* grass.obj in Resources */,
 				2030F2AC24BC30BF00B833DF /* border.obj in Resources */,
+				20C11FFB24C7F49500774F88 /* earth.jpg in Resources */,
 				2030F2A724BC30BF00B833DF /* paddle.obj in Resources */,
 				2030F2A424BC30BF00B833DF /* youlose.png in Resources */,
 				2030F2B424BC31F000B833DF /* pop.wav in Resources */,
+				20C11FF924C7F44300774F88 /* sun.jpg in Resources */,
 				204806AF24B132F0006C27D0 /* picture.png in Resources */,
 				201E12A424AFB3B000C01F47 /* Assets.xcassets in Resources */,
 				204806AD24B132F0006C27D0 /* picture-frame-mask.png in Resources */,
@@ -373,12 +395,12 @@
 				2030F2A624BC30BF00B833DF /* ball.png in Resources */,
 				2030F2B324BC31F000B833DF /* bulletstorm_bg_v1.mp3 in Resources */,
 				2030F2A524BC30BF00B833DF /* border.png in Resources */,
-				209D195D24B8348C00681958 /* sun.obj in Resources */,
 				20416BCC24B78408005CF8B8 /* mushroom.png in Resources */,
 				20416BC924B78408005CF8B8 /* texturedCube.png in Resources */,
 				2030F2AE24BC30BF00B833DF /* brick.obj in Resources */,
 				2030F2A824BC30BF00B833DF /* youwin.png in Resources */,
 				2030F2AD24BC30BF00B833DF /* youlose.obj in Resources */,
+				20C11FF824C7F44300774F88 /* sun.obj in Resources */,
 				2030F2A924BC30BF00B833DF /* youwin.obj in Resources */,
 				2030F2AA24BC30BF00B833DF /* paddle.png in Resources */,
 				20416BCD24B78408005CF8B8 /* mushroom.obj in Resources */,
@@ -395,11 +417,13 @@
 				206610C124B6E7F800FD7F4B /* Camera.swift in Sources */,
 				201E12AF24AFB3BD00C01F47 /* Renderer.swift in Sources */,
 				20D7304724B01F7F00028FE8 /* Plane.swift in Sources */,
+				2082EE9624C6EAE20069ED3A /* Planet.swift in Sources */,
 				209D196524B845D800681958 /* InstanceScene.swift in Sources */,
 				209D196124B83B8A00681958 /* CrowdScene.swift in Sources */,
 				201E129F24AFB3AF00C01F47 /* ViewController.swift in Sources */,
 				206610BB24B6AE9400FD7F4B /* Primitive.swift in Sources */,
 				20D7304B24B0497400028FE8 /* Types.swift in Sources */,
+				20D6E36E24C5499D00C182CB /* SpaceScene.swift in Sources */,
 				20D7304124B01F5600028FE8 /* Scene.swift in Sources */,
 				20D7304D24B0531F00028FE8 /* Renderable.swift in Sources */,
 				2059CD4624BC729C00B7EC18 /* GameOverScene.swift in Sources */,

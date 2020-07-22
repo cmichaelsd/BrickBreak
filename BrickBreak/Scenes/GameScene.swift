@@ -35,7 +35,6 @@ class GameScene: Scene {
         
         camera.position.z = -sceneOffset(height: Constants.gameHeight, fov: camera.fovRadians)
         camera.position.x = -Constants.gameWidth / 2
-//        camera.position.y = -Constants.gameHeight / 2
 //        camera.rotation.x = radians(fromDegrees: 20)
         camera.position.y = -Constants.gameHeight / 2 + 5
         

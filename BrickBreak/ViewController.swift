@@ -24,6 +24,12 @@ enum Colors {
         blue: 0.96,
         alpha: 1.0
     )
+    static let black = MTLClearColor(
+        red: 0,
+        green: 0,
+        blue: 0,
+        alpha: 1
+    )
 }
 
 class ViewController: UIViewController {
@@ -42,12 +48,12 @@ class ViewController: UIViewController {
             fatalError("device not created")
         }
         
-        metalView.clearColor = Colors.green
+        metalView.clearColor = Colors.black
         metalView.depthStencilPixelFormat = .depth32Float
         
         renderer = Renderer(device: device)
         
-        let scene = LandscapeScene(device: device, size: view.bounds.size)
+        let scene = SpaceScene(device: device, size: view.bounds.size)
         scene.sceneDelegate = self
         renderer?.scene = scene
         
