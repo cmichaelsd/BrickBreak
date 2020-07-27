@@ -15,6 +15,9 @@
 		201E12A724AFB3B000C01F47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 201E12A524AFB3B000C01F47 /* LaunchScreen.storyboard */; };
 		201E12AF24AFB3BD00C01F47 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201E12AE24AFB3BD00C01F47 /* Renderer.swift */; };
 		201E12B124AFB88B00C01F47 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 201E12B024AFB88B00C01F47 /* Shader.metal */; };
+		2028C8E124C922280018A556 /* mercury.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2028C8E024C922280018A556 /* mercury.jpg */; };
+		2028C8E324C923250018A556 /* venus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2028C8E224C923250018A556 /* venus.jpg */; };
+		2028C8E524C9265E0018A556 /* mars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2028C8E424C9265E0018A556 /* mars.jpg */; };
 		2030F29624BC309300B833DF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2030F29524BC309300B833DF /* Utilities.swift */; };
 		2030F2A424BC30BF00B833DF /* youlose.png in Resources */ = {isa = PBXBuildFile; fileRef = 2030F29824BC30BF00B833DF /* youlose.png */; };
 		2030F2A524BC30BF00B833DF /* border.png in Resources */ = {isa = PBXBuildFile; fileRef = 2030F29924BC30BF00B833DF /* border.png */; };
@@ -65,6 +68,8 @@
 		20D7304B24B0497400028FE8 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304A24B0497400028FE8 /* Types.swift */; };
 		20D7304D24B0531F00028FE8 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304C24B0531F00028FE8 /* Renderable.swift */; };
 		20D7305124B07A6500028FE8 /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7305024B07A6500028FE8 /* Texturable.swift */; };
+		20E7632424C97E9F00A335FC /* jupiter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20E7632224C97E9F00A335FC /* jupiter.jpg */; };
+		20E7632524C97E9F00A335FC /* saturn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20E7632324C97E9F00A335FC /* saturn.jpg */; };
 		20F3301624B853F80012D204 /* grass.obj in Resources */ = {isa = PBXBuildFile; fileRef = 20F3301524B853F80012D204 /* grass.obj */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +84,9 @@
 		201E12A824AFB3B000C01F47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		201E12AE24AFB3BD00C01F47 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		201E12B024AFB88B00C01F47 /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
+		2028C8E024C922280018A556 /* mercury.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mercury.jpg; sourceTree = "<group>"; };
+		2028C8E224C923250018A556 /* venus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = venus.jpg; sourceTree = "<group>"; };
+		2028C8E424C9265E0018A556 /* mars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mars.jpg; sourceTree = "<group>"; };
 		2030F29524BC309300B833DF /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		2030F29824BC30BF00B833DF /* youlose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youlose.png; sourceTree = "<group>"; };
 		2030F29924BC30BF00B833DF /* border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = border.png; sourceTree = "<group>"; };
@@ -129,6 +137,8 @@
 		20D7304A24B0497400028FE8 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		20D7304C24B0531F00028FE8 /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 		20D7305024B07A6500028FE8 /* Texturable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
+		20E7632224C97E9F00A335FC /* jupiter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jupiter.jpg; sourceTree = "<group>"; };
+		20E7632324C97E9F00A335FC /* saturn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = saturn.jpg; sourceTree = "<group>"; };
 		20F3301524B853F80012D204 /* grass.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grass.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -270,6 +280,11 @@
 				207AEAC324C828A900AB1617 /* moon.jpg */,
 				20C11FF524C7F44200774F88 /* sun.obj */,
 				20C11FFA24C7F49500774F88 /* earth.jpg */,
+				2028C8E224C923250018A556 /* venus.jpg */,
+				20E7632224C97E9F00A335FC /* jupiter.jpg */,
+				20E7632324C97E9F00A335FC /* saturn.jpg */,
+				2028C8E424C9265E0018A556 /* mars.jpg */,
+				2028C8E024C922280018A556 /* mercury.jpg */,
 			);
 			path = sun;
 			sourceTree = "<group>";
@@ -381,6 +396,7 @@
 				20416BCB24B78408005CF8B8 /* humanFigure.obj in Resources */,
 				207AEAC424C828A900AB1617 /* moon.jpg in Resources */,
 				20F3301624B853F80012D204 /* grass.obj in Resources */,
+				20E7632424C97E9F00A335FC /* jupiter.jpg in Resources */,
 				2030F2AC24BC30BF00B833DF /* border.obj in Resources */,
 				20C11FFB24C7F49500774F88 /* earth.jpg in Resources */,
 				2030F2A724BC30BF00B833DF /* paddle.obj in Resources */,
@@ -393,10 +409,14 @@
 				20416BC824B78408005CF8B8 /* texturedCube.blend in Resources */,
 				201E12A224AFB3AF00C01F47 /* Main.storyboard in Resources */,
 				2030F2A624BC30BF00B833DF /* ball.png in Resources */,
+				2028C8E324C923250018A556 /* venus.jpg in Resources */,
+				2028C8E124C922280018A556 /* mercury.jpg in Resources */,
 				2030F2B324BC31F000B833DF /* bulletstorm_bg_v1.mp3 in Resources */,
 				2030F2A524BC30BF00B833DF /* border.png in Resources */,
 				20416BCC24B78408005CF8B8 /* mushroom.png in Resources */,
+				2028C8E524C9265E0018A556 /* mars.jpg in Resources */,
 				20416BC924B78408005CF8B8 /* texturedCube.png in Resources */,
+				20E7632524C97E9F00A335FC /* saturn.jpg in Resources */,
 				2030F2AE24BC30BF00B833DF /* brick.obj in Resources */,
 				2030F2A824BC30BF00B833DF /* youwin.png in Resources */,
 				2030F2AD24BC30BF00B833DF /* youlose.obj in Resources */,

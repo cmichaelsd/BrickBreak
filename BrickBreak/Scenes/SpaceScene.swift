@@ -16,10 +16,13 @@ class SpaceScene: Scene {
     }
     
     let sun: Planet
-//    let mercury: Model
-//    let venus: Model
+    let mercury: Planet
+    let venus: Planet
     let earth: Planet
     let moon: Planet
+    let mars: Planet
+    let jupiter: Planet
+    let saturn: Planet
     
     var previousTouchLocation: CGPoint = .zero
     
@@ -27,28 +30,83 @@ class SpaceScene: Scene {
         sun = Planet(
             device: device,
             imageName: "sun.jpg",
+            distanceFromOrigin: 0,
             scale: float3(repeating: 10.0),
             x: Constants.width / 2,
             y: Constants.height / 2,
-            z: 0.0
+            z: 0
         )
-//        mercury = Model(device: device, modelName: "sun")
-//        venus = Model(device: device, modelName: "sun")
+        mercury = Planet(
+            device: device,
+            imageName: "mercury.jpg",
+            distanceFromOrigin: 15,
+            scale: float3(repeating: 1.6),
+            x: sun.model.position.x,
+            y: Constants.height / 2,
+            z: 0
+        )
+        venus = Planet(
+            device: device,
+            imageName: "venus.jpg",
+            distanceFromOrigin: 28,
+            scale: float3(repeating: 4.8),
+            x: sun.model.position.x,
+            y: Constants.height / 2,
+            z: 0
+        )
         earth = Planet(
             device: device,
             imageName: "earth.jpg",
+            distanceFromOrigin: 48,
             scale: float3(repeating: 5.0),
-            x: sun.model.position.x + 35,
+            x: sun.model.position.x,
             y: Constants.height / 2,
-            z: 0.0
+            z: 0
         )
         moon = Planet(
             device: device,
             imageName: "moon.jpg",
-            scale: float3(repeating: 0.3),
-            x: 2.0,
-            y: 1.0,
-            z: 0.0
+            distanceFromOrigin: 12,
+            scale: float3(repeating: 2.3),
+            x: earth.model.position.x,
+            y: earth.model.position.y,
+            z: earth.model.position.z
+        )
+//        moon = Planet(
+//            device: device,
+//            imageName: "moon.jpg",
+//            distanceFromOrigin: 1.5,
+//            scale: float3(repeating: 0.25),
+//            x: 0,
+//            y: 1,
+//            z: 0
+//        ) as earths child
+        mars = Planet(
+            device: device,
+            imageName: "mars.jpg",
+            distanceFromOrigin: 65,
+            scale: float3(repeating: 2.5),
+            x: sun.model.position.x,
+            y: Constants.height / 2,
+            z: 0
+        )
+        jupiter = Planet(
+            device: device,
+            imageName: "jupiter.jpg",
+            distanceFromOrigin: 85,
+            scale: float3(repeating: 9.0),
+            x: sun.model.position.x,
+            y: Constants.height / 2,
+            z: 0
+        )
+        saturn = Planet(
+            device: device,
+            imageName: "saturn.jpg",
+            distanceFromOrigin: 115,
+            scale: float3(repeating: 8.0),
+            x: sun.model.position.x,
+            y: Constants.height / 2,
+            z: 0
         )
         super.init(device: device, size: size)
         
@@ -65,40 +123,44 @@ class SpaceScene: Scene {
     }
     
     override func update(deltaTime: Float) {
-        earth.update(
-            deltaTime: deltaTime,
-            distanceFromOrigin: 35,
-            originX: sun.model.position.x,
-            originZ: 0,
-            increment: 0.01,
-            rotates: true
-        )
-        moon.update(
-            deltaTime: deltaTime,
-            distanceFromOrigin: 2,
-            originX: 0,
-            originZ: 0,
-            increment: 0.05,
-            rotates: false
-        )
-//        moon.update(originX: 0, originY: 0, increment: 0.05)
+        sun.rotation(counterClockwise: true, speed: 0.037)
+        
+        mercury.revolution(originX: sun.model.position.x, originZ: 0, speed: 0.011)
+        mercury.rotation(counterClockwise: true, speed: 0.017)
+
+        venus.revolution(originX: sun.model.position.x, originZ: 0, speed: 0.004)
+        venus.rotation(counterClockwise: false, speed: 0.004)
+        
+        earth.revolution(originX: sun.model.position.x, originZ: 0, speed: 0.002)
+        earth.rotation(counterClockwise: true, speed: 1.0)
+        
+        // the dark side of the moon isnt always facing away
+        // the moon does correctly revolve around the earth now
+        moon.revolution(originX: earth.model.position.x, originZ: earth.model.position.z, speed: 0.037)
+        
+        mars.revolution(originX: sun.model.position.x, originZ: 0, speed: 0.002)
+        mars.rotation(counterClockwise: true, speed: 1.03)
+        
+        // 11.86 years / 4328.9 days
+        // 1 / 4328.9 = 0.00023101
+        jupiter.revolution(originX: sun.model.position.x, originZ: 0, speed: 0.00023101)
+        jupiter.rotation(counterClockwise: true, speed: 2.439)
+        
+        // 26 years / 9490 days
+        // 1 / 9490 = 0.00010537
+        saturn.revolution(originX: sun.model.position.x, originZ: 0, speed: 0.00010537)
+        saturn.rotation(counterClockwise: true, speed: 2.222)
     }
     
     func setupScene() {
         add(childNode: sun.model)
-        
-//        mercury.position.x = 2
-//        mercury.scale = float3(repeating: 0.1)
-//        mercury.materialColor = float4(arrayLiteral: 1, 0, 0, 1)
-//        sun.add(childNode: mercury)
-//
-//        venus.position.x = 2
-//        venus.scale = float3(repeating: 0.1)
-//        venus.materialColor = float4(arrayLiteral: 1, 0, 0, 1)
-//        sun.add(childNode: venus)
-        
+        add(childNode: mercury.model)
+        add(childNode: venus.model)
         add(childNode: earth.model)
-        earth.model.add(childNode: moon.model)
+        add(childNode: moon.model)
+        add(childNode: mars.model)
+        add(childNode: jupiter.model)
+        add(childNode: saturn.model)
     }
     
     override func touchesBegan(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) {

@@ -9,49 +9,44 @@
 import MetalKit
 
 class Planet: Node {
-    var angle: Float = 0.0
+    var angle: Float = Float.random(in: 0...π * 2)
+    var distanceFromOrigin: Float
     let model: Model
-    init(device: MTLDevice, imageName: String, scale: float3, x: Float, y: Float, z: Float) {
+    init(device: MTLDevice, imageName: String, distanceFromOrigin: Float, scale: float3, x: Float, y: Float, z: Float) {
+        self.distanceFromOrigin = distanceFromOrigin
         model = Model(device: device, modelName: "sun", imageName: imageName)
         model.scale = scale
-        model.position.x = x
+        model.position.x = x + distanceFromOrigin
         model.position.y = y
         model.position.z = z
     }
     
-    func update(
-        deltaTime: Float,
-        distanceFromOrigin: Float,
-        originX: Float,
-        originZ: Float,
-        increment: Float,
-        rotates: Bool
-    ) {
-        orbit(distanceFromOrigin: distanceFromOrigin, originX: originX, originZ: originZ, increment: increment)
-        
-        if rotates {
-            rotate(deltaTime: deltaTime)
-        }
-    }
-    
-    func orbit(distanceFromOrigin: Float, originX: Float, originZ: Float, increment: Float) {
-        let TWO_PI = π * 2
-
+    func revolution(originX: Float, originZ: Float, speed: Float) {
         let newX = originX + cos(angle) * distanceFromOrigin
         let newZ = originZ + sin(angle) * distanceFromOrigin
 
-        // planets in this solar system orbit counterclockwise
+        // planets in this solar system revolve counterclockwise
         if angle <= -TWO_PI {
             angle = 0.0
         } else {
-            angle -= increment
+            angle -= divisionOfPi() * speed
         }
 
         model.position.x = newX
         model.position.z = newZ
     }
     
-    func rotate(deltaTime: Float) {
-        model.rotation.y -= π / 4 * deltaTime
+    func rotation(counterClockwise: Bool, speed: Float) {
+        // divide pi into how many standard increments you are using
+        // I want 365 days
+        if counterClockwise {
+            model.rotation.y -= divisionOfPi() * speed
+        } else {
+            model.rotation.y += divisionOfPi() * speed
+        }
+    }
+    
+    private func divisionOfPi() -> Float {
+        return π / 365
     }
 }
