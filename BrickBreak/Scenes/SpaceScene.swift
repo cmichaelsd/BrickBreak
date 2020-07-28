@@ -29,6 +29,7 @@ class SpaceScene: Scene {
     override init(device: MTLDevice, size: CGSize) {
         sun = Planet(
             device: device,
+            modelName: "sun",
             imageName: "sun.jpg",
             distanceFromOrigin: 0,
             scale: float3(repeating: 10.0),
@@ -38,6 +39,7 @@ class SpaceScene: Scene {
         )
         mercury = Planet(
             device: device,
+            modelName: "sun",
             imageName: "mercury.jpg",
             distanceFromOrigin: 15,
             scale: float3(repeating: 1.6),
@@ -47,6 +49,7 @@ class SpaceScene: Scene {
         )
         venus = Planet(
             device: device,
+            modelName: "sun",
             imageName: "venus.jpg",
             distanceFromOrigin: 28,
             scale: float3(repeating: 4.8),
@@ -56,6 +59,7 @@ class SpaceScene: Scene {
         )
         earth = Planet(
             device: device,
+            modelName: "sun",
             imageName: "earth.jpg",
             distanceFromOrigin: 48,
             scale: float3(repeating: 5.0),
@@ -65,6 +69,7 @@ class SpaceScene: Scene {
         )
         moon = Planet(
             device: device,
+            modelName: "sun",
             imageName: "moon.jpg",
             distanceFromOrigin: 12,
             scale: float3(repeating: 2.3),
@@ -72,17 +77,9 @@ class SpaceScene: Scene {
             y: earth.model.position.y,
             z: earth.model.position.z
         )
-//        moon = Planet(
-//            device: device,
-//            imageName: "moon.jpg",
-//            distanceFromOrigin: 1.5,
-//            scale: float3(repeating: 0.25),
-//            x: 0,
-//            y: 1,
-//            z: 0
-//        ) as earths child
         mars = Planet(
             device: device,
+            modelName: "sun",
             imageName: "mars.jpg",
             distanceFromOrigin: 65,
             scale: float3(repeating: 2.5),
@@ -92,6 +89,7 @@ class SpaceScene: Scene {
         )
         jupiter = Planet(
             device: device,
+            modelName: "sun",
             imageName: "jupiter.jpg",
             distanceFromOrigin: 85,
             scale: float3(repeating: 9.0),
@@ -101,6 +99,7 @@ class SpaceScene: Scene {
         )
         saturn = Planet(
             device: device,
+            modelName: "saturn",
             imageName: "saturn.jpg",
             distanceFromOrigin: 115,
             scale: float3(repeating: 8.0),
@@ -134,9 +133,9 @@ class SpaceScene: Scene {
         earth.revolution(originX: sun.model.position.x, originZ: 0, speed: 0.002)
         earth.rotation(counterClockwise: true, speed: 1.0)
         
-        // the dark side of the moon isnt always facing away
-        // the moon does correctly revolve around the earth now
         moon.revolution(originX: earth.model.position.x, originZ: earth.model.position.z, speed: 0.037)
+        // darkside of moon will always face away if revolution and rotation speed are equal
+        moon.rotation(counterClockwise: true, speed: 0.037)
         
         mars.revolution(originX: sun.model.position.x, originZ: 0, speed: 0.002)
         mars.rotation(counterClockwise: true, speed: 1.03)

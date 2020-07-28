@@ -12,9 +12,18 @@ class Planet: Node {
     var angle: Float = Float.random(in: 0...π * 2)
     var distanceFromOrigin: Float
     let model: Model
-    init(device: MTLDevice, imageName: String, distanceFromOrigin: Float, scale: float3, x: Float, y: Float, z: Float) {
+    init(
+        device: MTLDevice,
+        modelName: String,
+        imageName: String,
+        distanceFromOrigin: Float,
+        scale: float3,
+        x: Float,
+        y: Float,
+        z: Float
+    ) {
         self.distanceFromOrigin = distanceFromOrigin
-        model = Model(device: device, modelName: "sun", imageName: imageName)
+        model = Model(device: device, modelName: modelName, imageName: imageName)
         model.scale = scale
         model.position.x = x + distanceFromOrigin
         model.position.y = y
@@ -38,7 +47,7 @@ class Planet: Node {
     
     func rotation(counterClockwise: Bool, speed: Float) {
         // divide pi into how many standard increments you are using
-        // I want 365 days
+        // 365 days
         if counterClockwise {
             model.rotation.y -= divisionOfPi() * speed
         } else {
