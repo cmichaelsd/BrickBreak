@@ -52,6 +52,19 @@ class Model: Node {
         return vertexDescriptor
     }
     
+    init(device: MTLDevice, modelName: String, imageName: String) {
+        super.init()
+//        name = imageName
+        loadModel(device: device, modelName: modelName)
+        
+        if let texture = setTexture(device: device, imageName: imageName) {
+            self.texture = texture
+            fragmentFunctionName = "lit_textured_fragment"
+        }
+        
+        pipelineState = buildPipelineState(device: device)
+    }
+    
     init(device: MTLDevice, modelName: String) {
         super.init()
         name = modelName

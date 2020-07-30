@@ -9,6 +9,7 @@
 import simd
 
 let π = Float.pi
+let TWO_PI = π * 2
 
 func radians(fromDegrees degrees: Float) -> Float {
     return (degrees / 180) * π
