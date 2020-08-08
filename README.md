@@ -1,4 +1,4 @@
-# BrickBreak
+# Swift Metal
 
 ### Info
 This is a graphics engine I made as part of a class I took.
