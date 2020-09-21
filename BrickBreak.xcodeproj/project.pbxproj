@@ -63,6 +63,8 @@
 		20C11FF824C7F44300774F88 /* sun.obj in Resources */ = {isa = PBXBuildFile; fileRef = 20C11FF524C7F44200774F88 /* sun.obj */; };
 		20C11FF924C7F44300774F88 /* sun.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20C11FF624C7F44300774F88 /* sun.jpg */; };
 		20C11FFB24C7F49500774F88 /* earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20C11FFA24C7F49500774F88 /* earth.jpg */; };
+		20C83BDC251879A300831880 /* saturns_ring.obj in Resources */ = {isa = PBXBuildFile; fileRef = 20C83BDA251879A300831880 /* saturns_ring.obj */; };
+		20C83BDD251879A300831880 /* saturns_ring.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 20C83BDB251879A300831880 /* saturns_ring.mtl */; };
 		20D6E36E24C5499D00C182CB /* SpaceScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D6E36D24C5499D00C182CB /* SpaceScene.swift */; };
 		20D7304124B01F5600028FE8 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304024B01F5600028FE8 /* Scene.swift */; };
 		20D7304324B01F6500028FE8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7304224B01F6500028FE8 /* GameScene.swift */; };
@@ -135,6 +137,8 @@
 		20C11FF524C7F44200774F88 /* sun.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sun.obj; sourceTree = "<group>"; };
 		20C11FF624C7F44300774F88 /* sun.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sun.jpg; sourceTree = "<group>"; };
 		20C11FFA24C7F49500774F88 /* earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = earth.jpg; sourceTree = "<group>"; };
+		20C83BDA251879A300831880 /* saturns_ring.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = saturns_ring.obj; sourceTree = "<group>"; };
+		20C83BDB251879A300831880 /* saturns_ring.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = saturns_ring.mtl; sourceTree = "<group>"; };
 		20D6E36D24C5499D00C182CB /* SpaceScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceScene.swift; sourceTree = "<group>"; };
 		20D7304024B01F5600028FE8 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		20D7304224B01F6500028FE8 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -289,6 +293,8 @@
 				20C11FF524C7F44200774F88 /* sun.obj */,
 				20C11FFA24C7F49500774F88 /* earth.jpg */,
 				2028C8E224C923250018A556 /* venus.jpg */,
+				20C83BDB251879A300831880 /* saturns_ring.mtl */,
+				20C83BDA251879A300831880 /* saturns_ring.obj */,
 				20E7632224C97E9F00A335FC /* jupiter.jpg */,
 				20E7632324C97E9F00A335FC /* saturn.jpg */,
 				204A6C1C24CFB91C002213FA /* saturn_ring.png */,
@@ -416,7 +422,9 @@
 				204806AF24B132F0006C27D0 /* picture.png in Resources */,
 				201E12A424AFB3B000C01F47 /* Assets.xcassets in Resources */,
 				204806AD24B132F0006C27D0 /* picture-frame-mask.png in Resources */,
+				20C83BDD251879A300831880 /* saturns_ring.mtl in Resources */,
 				20416BC824B78408005CF8B8 /* texturedCube.blend in Resources */,
+				20C83BDC251879A300831880 /* saturns_ring.obj in Resources */,
 				201E12A224AFB3AF00C01F47 /* Main.storyboard in Resources */,
 				2030F2A624BC30BF00B833DF /* ball.png in Resources */,
 				2028C8E324C923250018A556 /* venus.jpg in Resources */,

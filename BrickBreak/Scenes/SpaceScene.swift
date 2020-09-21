@@ -23,6 +23,7 @@ class SpaceScene: Scene {
     let mars: Planet
     let jupiter: Planet
     let saturn: Planet
+    let saturnsRings: Planet
     
     var previousTouchLocation: CGPoint = .zero
     
@@ -99,7 +100,7 @@ class SpaceScene: Scene {
         )
         saturn = Planet(
             device: device,
-            modelName: "saturn",
+            modelName: "sun",
             imageName: "saturn.jpg",
             distanceFromOrigin: 115,
             scale: float3(repeating: 8.0),
@@ -107,6 +108,17 @@ class SpaceScene: Scene {
             y: Constants.height / 2,
             z: 0
         )
+        saturnsRings = Planet(
+            device: device,
+            modelName: "saturns_ring",
+            imageName: "saturn_ring.png",
+            distanceFromOrigin: 0,
+            scale: float3(7.0, 2.0, 7.0),
+            x: saturn.model.position.x,
+            y: saturn.model.position.y,
+            z: saturn.model.position.z
+        )
+        
         super.init(device: device, size: size)
         
         camera.farZ = 300
@@ -149,6 +161,8 @@ class SpaceScene: Scene {
         // 1 / 9490 = 0.00010537
         saturn.revolution(originX: sun.model.position.x, originZ: 0, speed: 0.00010537)
         saturn.rotation(counterClockwise: true, speed: 2.222)
+        
+        saturnsRings.revolution(originX: saturn.model.position.x, originZ: saturn.model.position.z, speed: 0.00010537)
     }
     
     func setupScene() {
@@ -160,6 +174,7 @@ class SpaceScene: Scene {
         add(childNode: mars.model)
         add(childNode: jupiter.model)
         add(childNode: saturn.model)
+        add(childNode: saturnsRings.model)
     }
     
     override func touchesBegan(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) {
