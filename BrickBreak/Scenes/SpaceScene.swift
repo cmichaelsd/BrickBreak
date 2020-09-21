@@ -113,7 +113,7 @@ class SpaceScene: Scene {
             modelName: "saturns_ring",
             imageName: "saturn_ring.png",
             distanceFromOrigin: 0,
-            scale: float3(7.0, 2.0, 7.0),
+            scale: float3(6.0, 2.0, 8.0),
             x: saturn.model.position.x,
             y: saturn.model.position.y,
             z: saturn.model.position.z
@@ -161,7 +161,6 @@ class SpaceScene: Scene {
         // 1 / 9490 = 0.00010537
         saturn.revolution(originX: sun.model.position.x, originZ: 0, speed: 0.00010537)
         saturn.rotation(counterClockwise: true, speed: 2.222)
-        
         saturnsRings.revolution(originX: saturn.model.position.x, originZ: saturn.model.position.z, speed: 0.00010537)
     }
     

@@ -189,7 +189,7 @@ fragment half4 lit_textured_fragment(
     
     color = color * float4(ambientColor + diffuseColor + specularColor, 1);
     
-    if (color.a == 0.0)
+    if (color.a < 0.5)
         discard_fragment();
     
     return half4(color.r, color.g, color.b, 1);
